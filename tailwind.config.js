@@ -1,14 +1,21 @@
+const colors = require('tailwindcss/colors');
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 module.exports = {
-  variants: {
-    extend: {
-      textDecoration: ['active'],
-    },
-  },
   theme: {
-    extend: {
-      colors: {
-        primary: '#0070f3',
-      },
+    colors: {
+      bg: '#0E1324',
+      black: '#303030',
+      white: '#fff',
+      blueGray: colors.blueGray,
+      coolGray: colors.coolGray,
+      amber: colors.amber,
+      red: colors.red,
+      green: colors.green,
+    },
+    fontFamily: {
+      sans: ['Poppins', ...fontFamily.sans],
+      serif: ['Georgia', ...fontFamily.serif],
     },
   },
   plugins: [],
