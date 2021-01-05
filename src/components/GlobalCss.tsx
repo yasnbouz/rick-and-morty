@@ -4,6 +4,9 @@ export default function GlobalCss() {
   return (
     <Global
       styles={css`
+        body {
+          overflow-x: hidden;
+        }
         @font-face {
           font-family: 'Georgia';
           src: url('/fonts/Georgia/Georgia.ttf') format('truetype');
