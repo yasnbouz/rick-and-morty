@@ -1,8 +1,8 @@
-import { useState, useRef, useCallback } from 'react';
+import { FC, useState, useRef, useCallback } from 'react';
 import { StyledBurger, StyledNav, StyledMenu } from '@/styles/index';
 import { useOnClickOutside } from '@/hooks';
 
-const Menu = () => {
+const Menu: FC = () => {
   const [open, setOpen] = useState(false);
   const refMenu = useRef<HTMLUListElement>(null);
   const refBurger = useRef<HTMLButtonElement>(null);

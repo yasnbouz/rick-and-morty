@@ -1,9 +1,13 @@
 import { Global, css } from '@emotion/react';
+import tw from 'twin.macro';
 
 export default function GlobalCss() {
   return (
     <Global
       styles={css`
+        html {
+          ${tw`font-sans`}
+        }
         body {
           overflow-x: hidden;
         }

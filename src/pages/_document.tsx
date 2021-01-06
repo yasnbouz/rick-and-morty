@@ -1,7 +1,12 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import { extractCritical } from '@emotion/server';
 
-class MyDocument extends Document {
+type Props = {
+  ids: string[];
+  css: any;
+};
+
+class MyDocument extends Document<Props> {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
     const page = await ctx.renderPage();
@@ -13,6 +18,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          {/* eslint-disable react/no-danger  */}
           <style data-emotion-css={this.props.ids.join(` `)} dangerouslySetInnerHTML={{ __html: this.props.css }} />
           <link rel="preload" href="/fonts/Georgia/Georgia.ttf" as="font" crossOrigin="" />
           <link rel="preload" href="/fonts/Poppins/Poppins-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
