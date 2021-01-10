@@ -1,4 +1,5 @@
-import tw, { styled, css } from 'twin.macro';
+import { keyframes } from '@emotion/react';
+import tw, { styled, css, theme } from 'twin.macro';
 
 type MenuProps = {
   open: boolean;
@@ -38,7 +39,12 @@ const containerStyle = css`
     max-width: 80rem;
   }
 `;
-
+const TextShadowStyle = css`
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+`;
+const primaryGradient = ({ whiteness = 0.2, color }: { whiteness?: number; color?: string }) => css`
+  background: linear-gradient(180deg, rgba(255, 255, 255, ${whiteness}) 0%, rgba(255, 255, 255, 0) 100%), ${color ?? theme`colors.blueGray.700`};
+`;
 // common styles
 
 // header styles
@@ -188,3 +194,112 @@ export const StyledContent = styled.div`
   }
 `;
 // hero styles
+
+// Episodes styles
+export const StyledEpisodes = styled.section`
+  ${tw`text-white py-16`}
+  ${containerStyle}
+`;
+export const StyledSectionTitle = tw.h2`text-4xl font-bold text-center mb-20`;
+export const StyledGrid = styled.div`
+  ${tw`grid grid-cols-1 gap-y-8 lg:(gap-x-8 grid-cols-3)`}
+`;
+export const StyledSeasonList = styled.div`
+  ${tw`flex flex-row flex-wrap content-start list-none gap-4 lg:(col-start-1 col-end-3 row-start-1 row-end-2)`}
+  button {
+    ${tw`font-bold text-base text-black bg-white rounded relative`}
+    ${TextShadowStyle}
+    height: 40px;
+    width: 120px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.25s ease-in;
+    &:hover:not(.activeSe) {
+      ${tw`opacity-80 animate-pulse`}
+    }
+    &.activeSe {
+      opacity: 1;
+      cursor: auto;
+    }
+    &:active:not(.activeSe) {
+      ${tw`animate-none`}
+    }
+    &.activeSe:after {
+      content: '';
+      ${tw`absolute block w-3 h-3 bg-purple-700 rounded-full -right-1.5 -top-1.5`}
+    }
+    &.activeSe:before {
+      content: '';
+      ${tw`absolute block w-3 h-3 bg-purple-700 rounded-full -right-1.5 -top-1.5 opacity-75 animate-ping`}
+    }
+  }
+`;
+
+export const StyledEpisodeList = styled.aside`
+  ${tw`bg-blueGray-800 rounded lg:( col-start-3 col-end-4 row-start-1 row-end-4)`}
+  max-width: 400px;
+  overflow: hidden;
+  position: relative;
+  :after {
+    content: '';
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background: linear-gradient(to top, rgba(15, 23, 42, 1) 0%, rgb(15, 23, 42, 0) 100%);
+    transition: transform 0.5s linear;
+  }
+  &.scrollEnd:after {
+    transform: translateY(100%);
+  }
+
+  h3 {
+    ${tw`text-2xl font-bold py-4 text-center rounded-tr rounded-tl`}
+    ${TextShadowStyle}
+    ${primaryGradient}
+  }
+
+  ul {
+    ${tw`py-8 px-4 flex flex-col gap-y-4 overflow-y-scroll`}
+    height:500px;
+    > li:last-of-type:after {
+      content: '';
+      display: block;
+      height: 2em;
+      margin-bottom: -2em;
+    }
+    button {
+      ${TextShadowStyle}
+      ${primaryGradient({ whiteness: 0.1 })}
+      ${tw`text-base truncate text-left w-full py-2.5 px-5 rounded cursor-pointer transition-colors duration-300`}
+      box-shadow: 0 2px 0 rgba(0, 0, 0, .1);
+      &:hover {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+        ${tw`bg-blueGray-800`}
+      }
+      &.activeEp {
+        ${tw`text-black cursor-auto`}
+        ${primaryGradient({ color: theme`colors.amber.400` })}
+      }
+      &:active:not(.activeEp) {
+        background: none;
+        box-shadow: 0 0 1px 0 hsla(0, 0%, 0%, 0.4) inset, 0 0 4px 0 hsla(0, 0%, 0%, 0.4) inset;
+      }
+      span {
+        :first-of-type {
+          ${tw`font-semibold`}
+        }
+        :last-of-type {
+          ${tw`font-medium`}
+        }
+      }
+    }
+  }
+`;
+export const StyledVideoContainer = styled.div`
+  /* background: ${theme`colors.blueGray.800`}; */
+  ${tw`lg:(col-start-1 col-end-3 row-start-2)`}
+`;
+// Episodes styles

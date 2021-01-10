@@ -9,7 +9,7 @@ export default function GlobalCss() {
           ${tw`font-sans`}
         }
         body {
-          overflow-x: hidden;
+          ${tw`bg-blueGray-900 overflow-x-hidden`}
         }
         @font-face {
           font-family: 'Georgia';

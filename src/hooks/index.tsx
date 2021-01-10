@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { MutableRefObject, useEffect } from 'react';
 
 export function useOnClickOutside({ refMenu, refBurger, callback }): void {
   useEffect(() => {
@@ -14,4 +14,21 @@ export function useOnClickOutside({ refMenu, refBurger, callback }): void {
       document.removeEventListener(`mousedown`, listener);
     };
   }, [refMenu.current, refBurger.current]);
+}
+export function useScrollEnd(ref: MutableRefObject<HTMLElement>) {
+  useEffect(() => {
+    const listener = () => {
+      const { offsetHeight, scrollHeight } = ref.current;
+      const scrollTop = Math.ceil(ref.current.scrollTop);
+      if (scrollTop + offsetHeight >= scrollHeight) {
+        ref.current.parentElement.classList.add(`scrollEnd`);
+      } else {
+        ref.current.parentElement.classList.remove(`scrollEnd`);
+      }
+    };
+    ref.current.addEventListener(`scroll`, listener);
+    return () => {
+      ref.current.removeEventListener(`scroll`, listener);
+    };
+  }, [ref.current]);
 }

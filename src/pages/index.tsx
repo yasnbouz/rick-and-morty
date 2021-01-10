@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import Head from 'next/head';
-import { Header, Hero } from '@/components';
-import 'twin.macro';
+import { Episodes, Header, Hero } from '@/components';
 
 const Home: FC = () => (
-  <div tw="bg-blueGray-900">
+  <div>
     <Head>
       <title>Rick and Morty</title>
     </Head>
     <Header />
     <main>
       <Hero />
+      <Episodes />
     </main>
   </div>
 );
