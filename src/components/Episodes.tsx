@@ -1,36 +1,37 @@
 import { useScrollEnd } from '@/hooks';
 import { StyledEpisodeList, StyledEpisodes, StyledGrid, StyledSeasonList, StyledSectionTitle, StyledVideoContainer } from '@/styles';
-import { FC, useRef } from 'react';
+import { useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'vimond-replay/index.css';
 
-const Replay = dynamic(() => import(`vimond-replay`).then((mod) => mod.Replay), { ssr: false });
+const Replay = dynamic<any>(() => import(`vimond-replay`).then((mod) => mod.Replay), { ssr: false });
 
-const Episodes: FC = () => {
+export default function Episodes() {
   const listRef = useRef<HTMLUListElement>(null);
   useScrollEnd(listRef);
+  const [seasons, setSeasons] = useState([`Season 1`, `Season 2`, `Season 3`, `Season 4`]);
+  const [selected, setSelected] = useState(`Season 1`);
+  const handleSeasons = (season) => {
+    setSelected(season);
+  };
   return (
     <StyledEpisodes>
       <StyledSectionTitle>Episodes</StyledSectionTitle>
       <StyledGrid>
         <StyledSeasonList>
-          <li>
-            <button type="button">Season 1</button>
-          </li>
-          <li>
-            <button className="activeSe" type="button">
-              Season 2
-            </button>
-          </li>
-          <li>
-            <button type="button">Season 3</button>
-          </li>
-          <li>
-            <button type="button">Season 4</button>
-          </li>
+          {seasons.map((season) => (
+            <li key={season}>
+              <button type="button" className={`${selected === season ? `activeSe` : ``}`} onClick={() => handleSeasons(season)}>
+                {season}
+              </button>
+            </li>
+          ))}
         </StyledSeasonList>
         <StyledVideoContainer>
-          <Replay source={{ streamUrl: `` }} initialPlaybackProps={{ isPaused: true, isMuted: false, volume: 0.2 }} />
+          <Replay
+            source={{ streamUrl: `https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4` }}
+            initialPlaybackProps={{ isPaused: true, isMuted: false, volume: 0.2 }}
+          />
         </StyledVideoContainer>
         <StyledEpisodeList>
           <h3>Episodes</h3>
@@ -100,6 +101,4 @@ const Episodes: FC = () => {
       </StyledGrid>
     </StyledEpisodes>
   );
-};
-
-export default Episodes;
+}
