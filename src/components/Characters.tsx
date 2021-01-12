@@ -1,6 +1,7 @@
 import { StyledCharacters, StyledSectionTitle } from '@/styles';
 import Character from './Character';
 import 'twin.macro';
+import Pagination from './Pagination';
 
 export default function Characters() {
   return (
@@ -14,6 +15,7 @@ export default function Characters() {
         <Character />
         <Character />
       </div>
+      <Pagination />
     </StyledCharacters>
   );
 }

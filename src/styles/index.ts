@@ -1,5 +1,5 @@
 import tw, { styled, css, theme } from 'twin.macro';
-import Image from 'next/image';
+import Pagination from 'rc-pagination';
 
 type MenuProps = {
   open: boolean;
@@ -317,3 +317,51 @@ export const StyledCharacterImg = styled.div`
   }
 `;
 // Characters styles
+
+// Pagination
+
+export const StyledPagination = styled(Pagination)`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  li {
+    flex: 0 0 44px;
+    ${tw`text-base font-bold bg-blueGray-800`}
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    padding: 4px;
+    border: 2px solid transparent;
+    transition: border 0.25s linear, color 0.25s linear;
+
+    > * {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &.rc-pagination-jump-prev button:after,
+    &.rc-pagination-jump-next button:after {
+      display: block;
+      content: '•••';
+    }
+    &.rc-pagination-item {
+      cursor: pointer;
+    }
+    &.rc-pagination-item-active {
+      border-color: #ff0040;
+      color: #ff0040;
+    }
+    &.rc-pagination-disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      > * {
+        cursor: not-allowed;
+      }
+    }
+  }
+`;
+
+// Pagination
