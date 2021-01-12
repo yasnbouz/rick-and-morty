@@ -1,5 +1,5 @@
-import { keyframes } from '@emotion/react';
 import tw, { styled, css, theme } from 'twin.macro';
+import Image from 'next/image';
 
 type MenuProps = {
   open: boolean;
@@ -197,14 +197,14 @@ export const StyledContent = styled.div`
 
 // Episodes styles
 export const StyledEpisodes = styled.section`
-  ${tw`text-white py-16`}
+  ${tw`text-white pt-16`}
   ${containerStyle}
 `;
 export const StyledSectionTitle = tw.h2`text-4xl font-bold text-center mb-20`;
 export const StyledGrid = styled.div`
   ${tw`grid grid-cols-1 gap-y-8 lg:(gap-x-8 grid-cols-3)`}
 `;
-export const StyledSeasonList = styled.div`
+export const StyledSeasonList = styled.ul`
   ${tw`flex flex-row flex-wrap content-start list-none gap-4 lg:(col-start-1 col-end-3 row-start-1 row-end-2)`}
   button {
     ${tw`font-bold text-base text-black bg-white rounded relative`}
@@ -303,3 +303,17 @@ export const StyledVideoContainer = styled.div`
   ${tw`lg:(col-start-1 col-end-3 row-start-2)`}
 `;
 // Episodes styles
+
+// Characters styles
+
+export const StyledCharacters = styled.section`
+  ${tw`text-white py-16`}
+  ${containerStyle}
+`;
+export const StyledCharacterImg = styled.div`
+  height: 150px;
+  > div {
+    ${tw`shadow-xl rounded-lg transform scale-125 -mt-4 lg:(origin-left scale-150 mt-0)`}
+  }
+`;
+// Characters styles

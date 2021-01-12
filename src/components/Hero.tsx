@@ -7,7 +7,7 @@ const Hero: FC = () => (
     <Image src="/hero.png" alt="hero image" layout="fill" quality="45" priority />
     <StyledHeroContainer>
       <StyledPoster>
-        <Image src="/poster.png" width="310" height="500" layout="fixed" />
+        <Image src="/poster.png" alt="rick and morty poster" width="310" height="500" layout="fixed" />
       </StyledPoster>
       <StyledContent>
         <h1 className="title">
@@ -32,7 +32,7 @@ const Hero: FC = () => (
             <span>Creator</span>
           </div>
           <div className="rating">
-            <Image src="/star.svg" alt="star" width="24" height="24" />
+            <Image src="/star.svg" aria-hidden="true" alt="star" width="24" height="24" />
             <p>9.2</p>
           </div>
         </div>

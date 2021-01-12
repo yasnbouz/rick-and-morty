@@ -1,6 +1,6 @@
-import { FC } from 'react';
 import Head from 'next/head';
-import { Episodes, Header, Hero } from '@/components';
+import { Header, Hero, Episodes, Characters } from '@/components';
+import { FC } from 'react';
 
 const Home: FC = () => (
   <div>
@@ -11,6 +11,7 @@ const Home: FC = () => (
     <main>
       <Hero />
       <Episodes />
+      <Characters />
     </main>
   </div>
 );
