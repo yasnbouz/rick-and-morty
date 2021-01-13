@@ -16,7 +16,7 @@ export default function Episodes() {
   };
   return (
     <StyledEpisodes>
-      <StyledSectionTitle>Episodes</StyledSectionTitle>
+      <StyledSectionTitle id="episodes">Episodes</StyledSectionTitle>
       <StyledGrid>
         <StyledSeasonList>
           {seasons.map((season) => (

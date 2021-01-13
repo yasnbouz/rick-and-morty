@@ -7,6 +7,10 @@ export default function Menu() {
   const refMenu = useRef<HTMLUListElement>(null);
   const refBurger = useRef<HTMLButtonElement>(null);
   useOnClickOutside({ refMenu, refBurger, callback: useCallback(() => setOpen(false), [open]) });
+  const scrollIntoView = useCallback((id: string) => {
+    const element = document.getElementById(id);
+    element.scrollIntoView({ behavior: `smooth` });
+  }, []);
   return (
     <StyledNav>
       <StyledBurger ref={refBurger} open={open} onClick={() => setOpen(!open)}>
@@ -16,10 +20,14 @@ export default function Menu() {
       </StyledBurger>
       <StyledMenu ref={refMenu} open={open}>
         <li>
-          <a href="#episodes">Episodes</a>
+          <button type="button" onClick={() => scrollIntoView(`episodes`)}>
+            Episodes
+          </button>
         </li>
         <li>
-          <a href="#charcters">Characters</a>
+          <button type="button" onClick={() => scrollIntoView(`characters`)}>
+            Characters
+          </button>
         </li>
       </StyledMenu>
     </StyledNav>

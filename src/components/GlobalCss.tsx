@@ -11,6 +11,9 @@ export default function GlobalCss() {
         body {
           ${tw`bg-blueGray-900 overflow-x-hidden`}
         }
+        main {
+          position: relative;
+        }
         @font-face {
           font-family: 'Georgia';
           src: url('/fonts/Georgia/Georgia.ttf') format('truetype');

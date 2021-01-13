@@ -5,3 +5,4 @@ export { default as Hero } from './Hero';
 export { default as Episodes } from './Episodes';
 export { default as Characters } from './Characters';
 export { default as Pagination } from './Pagination';
+export { default as ScrollTop } from './ScrollTop';

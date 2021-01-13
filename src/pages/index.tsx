@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Header, Hero, Episodes, Characters } from '@/components';
+import { Header, Hero, Episodes, Characters, ScrollTop } from '@/components';
 
 export default function Home() {
   return (
@@ -12,6 +12,7 @@ export default function Home() {
         <Hero />
         <Episodes />
         <Characters />
+        <ScrollTop />
       </main>
     </div>
   );
