@@ -365,3 +365,17 @@ export const StyledPagination = styled(Pagination)`
 `;
 
 // Pagination
+
+// Footer
+
+export const StyledFooter = styled.footer`
+  ${tw`bg-bg text-white text-center font-medium text-2xl grid place-items-center`}
+  height:6.25rem;
+  p {
+    a {
+      ${tw`text-purple-600`}
+    }
+  }
+`;
+
+// Footer
