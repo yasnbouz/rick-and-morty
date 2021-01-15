@@ -1,21 +1,12 @@
 import { useState } from 'react';
-import { StyledCharacters, StyledSectionTitle } from '@/styles';
+import { ErrorMessage } from '@/components';
+import { StyledCharacters, StyledLoader, StyledSectionTitle } from '@/styles';
 import { useGetAllCharactersQuery } from '@/generated/graphql';
 import { client } from '@/lib/graphqlClient';
 import Pagination from './Pagination';
 import Character from './Character';
 import 'twin.macro';
 
-function ErrorMessge({ error }) {
-  return (
-    <div tw="table-cell align-middle w-80 h-48 rounded-lg bg-red-200 p-4 fixed top-1/2 left-1/2 -ml-40 -mt-40">
-      <p tw="text-red-700 font-bold text-center">Error : {error?.message ?? ``} </p>
-    </div>
-  );
-}
-function LoaderCircle() {
-  return <p tw="text-white font-bold text-center p-8">Loading Characters...</p>;
-}
 export default function Characters() {
   const [page, setPage] = useState(1);
   const { data, isLoading, isError, error } = useGetAllCharactersQuery(client, { page }, { keepPreviousData: true });
@@ -23,9 +14,9 @@ export default function Characters() {
     <StyledCharacters>
       <StyledSectionTitle id="characters">Characters</StyledSectionTitle>
       {isError ? (
-        <ErrorMessge error={error} />
+        <ErrorMessage error={error} />
       ) : isLoading ? (
-        <LoaderCircle />
+        <StyledLoader />
       ) : (
         data && (
           <>

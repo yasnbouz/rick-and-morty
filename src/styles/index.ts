@@ -1,4 +1,5 @@
 import tw, { styled, css, theme } from 'twin.macro';
+import { keyframes } from '@emotion/react';
 import Pagination from 'rc-pagination';
 
 type MenuProps = {
@@ -125,9 +126,6 @@ export const StyledHeroContainer = styled.div`
 `;
 export const StyledPoster = styled.div`
   ${tw`mr-0 mb-5 md:(mr-10 mb-0 block)`}
-  > div {
-    /* margin: 0 auto; */
-  }
 `;
 export const StyledContent = styled.div`
   ${tw`flex flex-col items-start text-white`}
@@ -300,7 +298,6 @@ export const StyledEpisodeList = styled.aside`
   }
 `;
 export const StyledVideoContainer = styled.div`
-  /* background: ${theme`colors.blueGray.800`}; */
   ${tw`lg:(col-start-1 col-end-3 row-start-2)`}
 `;
 // Episodes styles
@@ -415,15 +412,75 @@ export const StyledPagination = styled(Pagination)`
 // Pagination
 
 // Footer
-
+const heartAnimation = keyframes`
+10%{
+  transform:scale(1.2)
+}
+20%{
+  transform:scale(1)
+}
+30%{
+  transform:scale(1.3)
+}
+50%{
+  transform:scale(1)
+}
+`;
 export const StyledFooter = styled.footer`
-  ${tw`bg-bg text-white text-center font-medium text-2xl grid place-items-center`}
+  ${tw`bg-bg font-medium grid place-items-center`}
   height:6.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   p {
-    a {
-      ${tw`text-purple-600`}
-    }
+    ${tw`text-blueGray-500 text-base`}
+  }
+  .love {
+    padding: 0 0.5rem;
+    animation: ${heartAnimation} 2s ease infinite;
+  }
+  a {
+    ${tw`text-white text-lg`}
   }
 `;
 
 // Footer
+
+// Loader Styles
+const spinAnimation = keyframes`
+  to {
+      transform: rotate(360deg);
+    }
+`;
+const pulseAnimation = keyframes`
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+`;
+export const StyledLoader = styled.div`
+  display: flex;
+  width: 3.5em;
+  height: 3.5em;
+  border: 3px solid transparent;
+  border-top-color: ${theme`colors.purple.700`};
+  border-bottom-color: ${theme`colors.purple.700`};
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: ${spinAnimation} 1.5s linear infinite;
+
+  &:before {
+    content: '';
+    display: block;
+    margin: auto;
+    width: 0.75em;
+    height: 0.75em;
+    border: 3px solid ${theme`colors.purple.700`};
+    border-radius: 50%;
+    animation: ${pulseAnimation} 1s alternate ease-in-out infinite;
+  }
+`;
+
+// Loader Styles
