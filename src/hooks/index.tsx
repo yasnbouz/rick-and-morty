@@ -28,7 +28,9 @@ export function useScrollEnd(ref: MutableRefObject<HTMLElement>) {
     };
     ref.current.addEventListener(`scroll`, listener);
     return () => {
-      ref.current.removeEventListener(`scroll`, listener);
+      if (ref.current) {
+        ref.current.removeEventListener(`scroll`, listener);
+      }
     };
   }, [ref.current]);
 }

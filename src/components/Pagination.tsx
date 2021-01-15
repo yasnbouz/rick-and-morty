@@ -21,21 +21,33 @@ function PrevIcon() {
     </button>
   );
 }
-
-export default function Pagination() {
-  const [current, setCurrent] = useState(1);
-  const [total, setTotal] = useState(40);
-  const [pageSize, setPageSize] = useState(6);
+type PaginationProps = {
+  page: number;
+  setPage: (page: number) => void;
+  total: number;
+};
+export default function Pagination({ page, setPage, total }: PaginationProps) {
+  const [pageSize] = useState(20);
   const handlePagination = useCallback(
-    (page) => {
-      console.log(page);
-      setCurrent(page);
+    (cursor) => {
+      setPage(cursor);
     },
-    [current],
+    [page],
   );
   return (
     <div tw="mt-24 max-w-max mx-auto">
-      <StyledPagination current={current} total={total} pageSize={pageSize} onChange={handlePagination} showLessItems locale={locale} prevIcon={PrevIcon} nextIcon={NextIcon} />
+      <StyledPagination
+        current={page}
+        total={total}
+        pageSize={pageSize}
+        onChange={handlePagination}
+        showLessItems
+        showTitle
+        showSizeChanger={false}
+        locale={locale}
+        prevIcon={PrevIcon}
+        nextIcon={NextIcon}
+      />
     </div>
   );
 }

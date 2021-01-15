@@ -6,13 +6,19 @@ export default function GlobalCss() {
     <Global
       styles={css`
         html {
-          ${tw`font-sans`}
+          ${tw`font-sans h-full`}
         }
         body {
-          ${tw`bg-blueGray-900 overflow-x-hidden`}
+          ${tw`bg-blueGray-900 overflow-x-hidden h-full`}
+        }
+        #__next {
+          min-height: 100%;
+          display: flex;
+          flex-direction: column;
         }
         main {
           position: relative;
+          flex: 1;
         }
         @font-face {
           font-family: 'Georgia';

@@ -51,6 +51,7 @@ const primaryGradient = ({ whiteness = 0.2, color }: { whiteness?: number; color
 export const StyledHeader = styled.header`
   ${tw`bg-blueGray-900 text-white flex justify-between items-center text-2xl relative`}
   height:6.25rem;
+  width: 100%;
   ${containerStyle}
 `;
 export const StyledNav = tw.nav`w-72 h-full flex justify-between items-center relative `;
@@ -316,6 +317,53 @@ export const StyledCharacterImg = styled.div`
     ${tw`shadow-xl rounded-lg transform scale-125 -mt-4 lg:(origin-left scale-150 mt-0)`}
   }
 `;
+// Character style
+
+export const StyledCharacterName = styled.h3`
+  ${tw`text-xl font-bold tracking-wide truncate sm:text-2xl`}
+  max-width:14ch;
+  @media (min-width: 40em) {
+    max-width: 13ch;
+  }
+  @media (min-width: 64em) {
+    max-width: 28ch;
+  }
+  @media (min-width: 80em) {
+    max-width: 17ch;
+  }
+  @media (min-width: 87.5em) {
+    max-width: 21ch;
+  }
+`;
+export const StyledEpisodeName = styled.p`
+  ${tw`lg:truncate`}
+  @media (min-width: 64em) {
+    max-width: 38ch;
+  }
+  @media (min-width: 80em) {
+    max-width: 28ch;
+  }
+  @media (min-width: 87.5em) {
+    max-width: 33ch;
+  }
+`;
+export const StyledCharacterStatus = styled.p`
+  ${tw`text-base font-normal truncate`}
+  @media (max-width: 64em) {
+    max-width: 12ch;
+  }
+`;
+export const StyledCharacterOrigin = styled.p`
+  ${tw`lg:truncate`}
+  @media (min-width: 80em) {
+    max-width: 28ch;
+  }
+  @media (min-width: 87.5em) {
+    max-width: 33ch;
+  }
+`;
+// Character style
+
 // Characters styles
 
 // Pagination

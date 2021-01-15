@@ -203,6 +203,7 @@ export type GetAllCharactersQueryVariables = Exact<{
 export type GetAllCharactersQuery = { __typename?: 'Query' } & {
   characters?: Maybe<
     { __typename?: 'Characters' } & {
+      info?: Maybe<{ __typename?: 'Info' } & Pick<Info, 'count' | 'pages' | 'next' | 'prev'>>;
       results?: Maybe<
         Array<
           Maybe<
@@ -220,6 +221,12 @@ export type GetAllCharactersQuery = { __typename?: 'Query' } & {
 export const GetAllCharactersDocument = `
     query getAllCharacters($page: Int = 1) {
   characters(page: $page) {
+    info {
+      count
+      pages
+      next
+      prev
+    }
     results {
       id
       name
