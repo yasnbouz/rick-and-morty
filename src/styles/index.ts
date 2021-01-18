@@ -298,7 +298,16 @@ export const StyledEpisodeList = styled.aside`
   }
 `;
 export const StyledVideoContainer = styled.div`
-  ${tw`lg:(col-start-1 col-end-3 row-start-2)`}
+  ${tw`justify-center items-center lg:(col-start-1 col-end-3 row-start-2)`}
+  >div.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 193px;
+    @media (min-width: 768px) {
+      min-height: 450px;
+    }
+  }
 `;
 // Episodes styles
 

@@ -218,6 +218,19 @@ export type GetAllCharactersQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export type GetAllEpisodesQueryVariables = Exact<{
+  page?: Maybe<Scalars['Int']>;
+}>;
+
+export type GetAllEpisodesQuery = { __typename?: 'Query' } & {
+  episodes?: Maybe<
+    { __typename?: 'Episodes' } & {
+      info?: Maybe<{ __typename?: 'Info' } & Pick<Info, 'next'>>;
+      results?: Maybe<Array<Maybe<{ __typename?: 'Episode' } & Pick<Episode, 'id' | 'name' | 'episode'>>>>;
+    }
+  >;
+};
+
 export const GetAllCharactersDocument = `
     query getAllCharacters($page: Int = 1) {
   characters(page: $page) {
@@ -252,5 +265,29 @@ export const useGetAllCharactersQuery = <TData = GetAllCharactersQuery, TError =
   useQuery<GetAllCharactersQuery, TError, TData>(
     [`getAllCharacters`, variables],
     fetcher<GetAllCharactersQuery, GetAllCharactersQueryVariables>(client, GetAllCharactersDocument, variables),
+    options,
+  );
+export const GetAllEpisodesDocument = `
+    query getAllEpisodes($page: Int = 1) {
+  episodes(page: $page) {
+    info {
+      next
+    }
+    results {
+      id
+      name
+      episode
+    }
+  }
+}
+    `;
+export const useGetAllEpisodesQuery = <TData = GetAllEpisodesQuery, TError = unknown>(
+  client: GraphQLClient,
+  variables?: GetAllEpisodesQueryVariables,
+  options?: UseQueryOptions<GetAllEpisodesQuery, TError, TData>,
+) =>
+  useQuery<GetAllEpisodesQuery, TError, TData>(
+    [`getAllEpisodes`, variables],
+    fetcher<GetAllEpisodesQuery, GetAllEpisodesQueryVariables>(client, GetAllEpisodesDocument, variables),
     options,
   );

@@ -1,27 +1,42 @@
 import { useScrollEnd } from '@/hooks';
-import { StyledEpisodeList, StyledEpisodes, StyledGrid, StyledSeasonList, StyledSectionTitle, StyledVideoContainer } from '@/styles';
-import { useRef, useState } from 'react';
+import { StyledEpisodeList, StyledEpisodes, StyledGrid, StyledLoader, StyledSeasonList, StyledSectionTitle, StyledVideoContainer } from '@/styles';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { useGetAllEpisodesQuery } from '@/generated/graphql';
+import { client } from '@/lib/graphqlClient';
+import { buildSeasons, getEpisodes, getSeasons } from '@/utils';
 import 'vimond-replay/index.css';
 
-const Replay = dynamic<any>(() => import(`vimond-replay`).then((mod) => mod.Replay), { ssr: false });
+const Replay = dynamic<any>(() => import(`vimond-replay`).then((mod) => mod.Replay), {
+  ssr: false,
+  loading: () => (
+    <div className="wrapper">
+      <StyledLoader />
+    </div>
+  ),
+});
 
 export default function Episodes() {
+  const { data } = useGetAllEpisodesQuery(client);
+
+  const seasonsData = useMemo(() => buildSeasons(data.episodes.results), [data]);
   const listRef = useRef<HTMLUListElement>(null);
   useScrollEnd(listRef);
-  const [seasons, setSeasons] = useState([`Season 1`, `Season 2`, `Season 3`, `Season 4`]);
-  const [selected, setSelected] = useState(`Season 1`);
-  const handleSeasons = (season) => {
-    setSelected(season);
-  };
+  const seasons = useMemo(() => getSeasons(seasonsData), [seasonsData]);
+  const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
+  const episodes = useMemo(() => getEpisodes(seasonsData, selectedSeason), [seasonsData, selectedSeason]);
+  const [selectedEp, setSelectedEp] = useState(() => episodes[0].title);
+  useEffect(() => {
+    setSelectedEp(episodes?.[0].title);
+  }, [episodes]);
   return (
     <StyledEpisodes>
       <StyledSectionTitle id="episodes">Episodes</StyledSectionTitle>
       <StyledGrid>
         <StyledSeasonList>
-          {seasons.map((season) => (
+          {seasons?.map((season) => (
             <li key={season}>
-              <button type="button" className={`${selected === season ? `activeSe` : ``}`} onClick={() => handleSeasons(season)}>
+              <button type="button" className={`${selectedSeason === season ? `activeSe` : ``}`} onClick={() => setSelectedSeason(season)}>
                 {season}
               </button>
             </li>
@@ -36,66 +51,14 @@ export default function Episodes() {
         <StyledEpisodeList>
           <h3>Episodes</h3>
           <ul ref={listRef}>
-            <li>
-              <button type="button">
-                <span>Episode 1 : </span>
-                <span>The Ricklantis Mixup Mixup Mzz</span>
-              </button>
-            </li>
-            <li>
-              <button type="button">
-                <span>Episode 2 : </span>
-                <span>The Ricklantis Mixup</span>
-              </button>
-            </li>
-            <li>
-              <button type="button">
-                <span>Episode 3 : </span>
-                <span>The Ricklantis Mixup</span>
-              </button>
-            </li>
-            <li>
-              <button type="button">
-                <span>Episode 4 : </span>
-                <span>The Ricklantis Mixup</span>
-              </button>
-            </li>
-            <li>
-              <button className="activeEp" type="button">
-                <span>Episode 5 : </span>
-                <span>The Ricklantis Mixup</span>
-              </button>
-            </li>
-            <li>
-              <button type="button">
-                <span>Episode 6 : </span>
-                <span>The Ricklantis Mixup</span>
-              </button>
-            </li>
-            <li>
-              <button type="button">
-                <span>Episode 7 : </span>
-                <span>The Ricklantis Mixup</span>
-              </button>
-            </li>
-            <li>
-              <button type="button">
-                <span>Episode 8 : </span>
-                <span>The Ricklantis Mixup</span>
-              </button>
-            </li>
-            <li>
-              <button type="button">
-                <span>Episode 9 : </span>
-                <span>The Ricklantis Mixup</span>
-              </button>
-            </li>
-            <li>
-              <button type="button">
-                <span>Episode 10 : </span>
-                <span>The Ricklantis Mixup</span>
-              </button>
-            </li>
+            {episodes?.map((ep) => (
+              <li key={ep.name}>
+                <button type="button" className={`${ep.title === selectedEp ? `activeEp` : ``}`} title={ep.title} onClick={() => setSelectedEp(ep.title)}>
+                  <span>{ep.name} : </span>
+                  <span>{ep.title}</span>
+                </button>
+              </li>
+            ))}
           </ul>
         </StyledEpisodeList>
       </StyledGrid>
