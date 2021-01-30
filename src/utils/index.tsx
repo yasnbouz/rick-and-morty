@@ -1,25 +1,30 @@
-import { Episode } from '@/generated/graphql';
-
 export type MyEpisode = {
   name: string;
   title: string;
+  video: string;
 };
 
 export type Season = {
   season: string;
   episodes: MyEpisode[];
 };
-
-export function buildSeasons(data: Episode[]): Season[] {
+interface IData {
+  season: string;
+  episode: string;
+  video: string;
+}
+export function buildSeasons(data: IData[]): Season[] {
   let seasonIndex = 0;
   let prevSeasonIndex = seasonIndex;
 
   return data?.reduce((acc, cur) => {
-    const seasonName = cur.episode.slice(0, 3).replace(/^S0?/, `Season `);
-    const episodeName = cur.episode.slice(3).replace(/^E0?/, `Episode `);
-    const episode = { name: episodeName, title: cur.name };
-    const season = { season: seasonName, episodes: [episode] };
-    if (acc[prevSeasonIndex]?.season !== seasonName) {
+    const semiIndex = cur.episode.indexOf(`:`);
+    const episodeName = cur.episode.slice(0, semiIndex).trim();
+    const episodeTitle = cur.episode.slice(semiIndex + 1).trim();
+    const episode = { name: episodeName, title: episodeTitle, video: cur.video };
+    const season = { season: cur.season, episodes: [episode] };
+
+    if (acc[prevSeasonIndex]?.season !== cur.season) {
       acc[seasonIndex] = season;
       prevSeasonIndex = seasonIndex;
       seasonIndex += 1;

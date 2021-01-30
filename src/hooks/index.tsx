@@ -1,4 +1,5 @@
 import { MutableRefObject, useEffect } from 'react';
+import { useQuery } from 'react-query';
 
 export function useOnClickOutside({ refMenu, refBurger, callback }): void {
   useEffect(() => {
@@ -33,4 +34,10 @@ export function useScrollEnd(ref: MutableRefObject<HTMLElement>) {
       }
     };
   }, [ref.current]);
+}
+export function getAllEpisodes() {
+  return fetch(`http://localhost:3000/api/episodes/watch`).then((res) => res.json());
+}
+export function useGetAllEpisodes() {
+  return useQuery(`getAllEpisodes`, getAllEpisodes);
 }

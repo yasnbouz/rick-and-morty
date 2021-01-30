@@ -26,18 +26,3 @@ export const GET_ALL_CHARACTERS = gql`
     }
   }
 `;
-
-export const GET_ALL_EPISODES = gql`
-  query getAllEpisodes($page: Int = 1) {
-    episodes(page: $page) {
-      info {
-        next
-      }
-      results {
-        id
-        name
-        episode
-      }
-    }
-  }
-`;
