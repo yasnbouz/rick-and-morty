@@ -4,7 +4,6 @@ import { useQuery } from 'react-query';
 export function useOnClickOutside({ refMenu, refBurger, callback }): void {
   useEffect(() => {
     const listener = (event: MouseEvent): void => {
-      event.preventDefault();
       if (refMenu.current?.contains(event.target as Node) || refBurger.current?.contains(event.target as Node)) {
         return;
       }

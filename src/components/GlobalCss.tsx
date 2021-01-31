@@ -1,10 +1,13 @@
 import { Global, css } from '@emotion/react';
-import tw from 'twin.macro';
+import tw, { theme } from 'twin.macro';
 
 export default function GlobalCss() {
   return (
     <Global
       styles={css`
+        :root {
+          --plyr-color-main: ${theme`colors.amber.400`};
+        }
         html {
           ${tw`font-sans h-full`}
         }

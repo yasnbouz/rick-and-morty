@@ -10,3 +10,4 @@ export { default as Footer } from './Footer';
 export { default as HeartIcon } from './icons/HeartIcon';
 export { NextIcon, PrevIcon } from './icons/ArrowIcons';
 export { default as ErrorMessage } from './ErrorMessage';
+export { default as Player } from './Player';

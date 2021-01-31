@@ -1,18 +1,8 @@
 import { useGetAllEpisodes, useScrollEnd } from '@/hooks';
-import { StyledEpisodeList, StyledEpisodes, StyledGrid, StyledLoader, StyledSeasonList, StyledSectionTitle, StyledVideoContainer } from '@/styles';
+import { StyledEpisodeList, StyledEpisodes, StyledGrid, StyledSeasonList, StyledSectionTitle, StyledVideoContainer } from '@/styles';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
 import { buildSeasons, getEpisodes, getSeasons } from '@/utils';
-import 'vimond-replay/index.css';
-
-const Replay = dynamic<any>(() => import(`vimond-replay`).then((mod) => mod.Replay), {
-  ssr: false,
-  loading: () => (
-    <div className="wrapper">
-      <StyledLoader />
-    </div>
-  ),
-});
+import { Player } from '@/components';
 
 export default function Episodes() {
   const { data } = useGetAllEpisodes();
@@ -42,7 +32,7 @@ export default function Episodes() {
           ))}
         </StyledSeasonList>
         <StyledVideoContainer>
-          <Replay source={{ streamUrl: selectedEp.video }} initialPlaybackProps={{ isPaused: true, isMuted: false, volume: 0.2 }} />
+          <Player url={selectedEp.video} key={selectedEp.video} />
         </StyledVideoContainer>
         <StyledEpisodeList>
           <h3>Episodes</h3>

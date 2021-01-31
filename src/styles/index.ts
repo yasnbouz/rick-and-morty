@@ -298,14 +298,19 @@ export const StyledEpisodeList = styled.aside`
   }
 `;
 export const StyledVideoContainer = styled.div`
-  ${tw`justify-center items-center lg:(col-start-1 col-end-3 row-start-2)`}
-  >div.wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 193px;
-    @media (min-width: 768px) {
-      min-height: 450px;
+  ${tw`lg:(col-start-1 col-end-3 row-start-2)`}
+  > div {
+    width: 100%;
+    padding-top: 56.25%;
+    height: 0px;
+    position: relative;
+    .plyr {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 0.25rem;
     }
   }
 `;
