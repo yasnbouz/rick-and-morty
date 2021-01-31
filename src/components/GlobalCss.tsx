@@ -23,6 +23,9 @@ export default function GlobalCss() {
           position: relative;
           flex: 1;
         }
+        :focus:not(:focus-visible) {
+          outline: 0 !important;
+        }
         @font-face {
           font-family: 'Georgia';
           src: url('/fonts/Georgia/Georgia.ttf') format('truetype');
