@@ -4,6 +4,10 @@ import locale from 'rc-pagination/lib/locale/en_US';
 import { NextIcon, PrevIcon } from '@/components';
 import 'twin.macro';
 
+function sleep(ms) {
+  const start = Date.now();
+  while (Date.now() - start < ms);
+}
 type PaginationProps = {
   page: number;
   setPage: (page: number) => void;
@@ -13,7 +17,10 @@ export default function Pagination({ page, setPage, total }: PaginationProps) {
   const [pageSize] = useState(20);
   const handlePagination = useCallback(
     (cursor) => {
-      setPage(cursor);
+      document.getElementById(`characters`).scrollIntoView({ behavior: `auto` });
+      setTimeout(() => {
+        setPage(cursor);
+      }, 0);
     },
     [page],
   );
@@ -30,6 +37,16 @@ export default function Pagination({ page, setPage, total }: PaginationProps) {
         locale={locale}
         prevIcon={PrevIcon}
         nextIcon={NextIcon}
+        itemRender={(current, type, element) => {
+          if (type === `page`) {
+            return (
+              <button type="button" aria-label={`page ${current}`}>
+                {current}
+              </button>
+            );
+          }
+          return element;
+        }}
       />
     </div>
   );

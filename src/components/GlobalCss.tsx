@@ -26,6 +26,9 @@ export default function GlobalCss() {
         :focus:not(:focus-visible) {
           outline: 0 !important;
         }
+        ::selection {
+          background-color: ${theme`colors.purple.700`};
+        }
         @font-face {
           font-family: 'Georgia';
           src: url('/fonts/Georgia/Georgia.ttf') format('truetype');

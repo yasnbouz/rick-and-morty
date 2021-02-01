@@ -13,10 +13,10 @@ export default function Menu() {
   }, []);
   return (
     <StyledNav>
-      <StyledBurger ref={refBurger} open={open} onClick={() => setOpen(!open)}>
-        <div />
-        <div />
-        <div />
+      <StyledBurger ref={refBurger} open={open} onClick={() => setOpen(!open)} aria-label="open the menu">
+        <div aria-hidden="true" />
+        <div aria-hidden="true" />
+        <div aria-hidden="true" />
       </StyledBurger>
       <StyledMenu ref={refMenu} open={open}>
         <li>

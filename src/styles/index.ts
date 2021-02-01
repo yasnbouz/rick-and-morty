@@ -68,6 +68,25 @@ export const StyledMenu = styled.ul<MenuProps>`
       ${tw`mb-12`};
     }
   }
+  button {
+    color: #fff;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: ${theme`colors.amber.400`};
+      transform-origin: left;
+      transform: scaleX(0) skew(-40deg);
+      transition: transform 0.25s ease;
+    }
+    &:hover::before {
+      transform: scaleX(1) skew(-40deg);
+    }
+  }
 `;
 export const StyledBurger = styled.button<MenuProps>`
   position: absolute;
@@ -162,17 +181,24 @@ export const StyledContent = styled.div`
     }
   }
   .rating {
-    ${tw`flex flex-row items-start self-start lg:-mt-1`}
+    ${tw`flex flex-row items-center self-start lg:-mt-1`}
     > div {
-      ${tw`w-6 h-6 lg:( w-8 h-8 )`}
+      @media (min-width: 64em) {
+        width: 2rem !important;
+        height: 2rem !important;
+      }
     }
     p {
       ${tw`font-semibold text-xl tracking-widest ml-4 lg:(text-3xl)`}
     }
   }
-  button {
-    ${tw`border-2 rounded uppercase font-bold tracking-widest relative overflow-hidden hover:text-black`}
-    width:200px;
+  a.btn {
+    ${tw`rounded uppercase font-bold tracking-widest relative overflow-hidden hover:text-black`}
+    display: inline-block;
+    text-align: center;
+    line-height: 48px;
+    box-shadow: 0 0 0px 1px #fff;
+    width: 200px;
     height: 48px;
     transition: color 0.25s 0s ease-in;
     :after {
@@ -210,14 +236,14 @@ export const StyledSeasonList = styled.ul`
     ${TextShadowStyle}
     height: 40px;
     width: 120px;
-    opacity: 0.5;
+    background-color: #a2a5a9;
     cursor: pointer;
-    transition: opacity 0.25s ease-in;
+    transition: background-color 0.25s ease-in;
     &:hover:not(.activeSe) {
       ${tw`opacity-80 animate-pulse`}
     }
     &.activeSe {
-      opacity: 1;
+      background-color: #fff;
       cursor: auto;
     }
     &:active:not(.activeSe) {
@@ -447,7 +473,7 @@ export const StyledFooter = styled.footer`
   justify-content: center;
   align-items: center;
   p {
-    ${tw`text-blueGray-500 text-base`}
+    ${tw`text-blueGray-400 text-base`}
   }
   .love {
     padding: 0 0.5rem;

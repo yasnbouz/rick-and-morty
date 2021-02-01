@@ -36,7 +36,9 @@ export default function Hero() {
               <p>9.2</p>
             </div>
           </div>
-          <button type="button">watch trailer</button>
+          <a href="https://www.youtube.com/watch?v=hl1U0bxTHbY" className="btn" target="_blank" rel="noreferrer noopener">
+            watch trailer
+          </a>
         </StyledContent>
       </StyledHeroContainer>
     </StyledHero>

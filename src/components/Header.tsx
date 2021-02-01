@@ -9,7 +9,7 @@ export default function Header() {
       <div>
         <Link href="/">
           <a>
-            <Image src="/logo.png" width="164" height="52" alt="rick and morty" layout="fixed" priority />
+            <Image src="/logo.png" width="164" quality={75} height="52" alt="rick and morty" layout="fixed" priority />
           </a>
         </Link>
       </div>

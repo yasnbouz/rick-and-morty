@@ -7,6 +7,7 @@ import { GetAllCharactersDocument, GetAllCharactersQuery } from '@/generated/gra
 import { QueryClient } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
 import { getAllEpisodes } from '@/hooks';
+import { NextSeo } from 'next-seo';
 
 export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -25,9 +26,30 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Rick and Morty</title>
-      </Head>
+      <NextSeo
+        title="Watch Rick and Morty (2013)"
+        description="Watch Rick and Morty (2013) - Action & Adventure, Animation, Comedy, Sci-Fi & Fantasy TVShow: Rick is a mentally-unbalanced but scientifically-gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school."
+        openGraph={{
+          url: `http://localhost:3000`,
+          type: `website`,
+          title: `Watch Rick and Morty (2013)`,
+          description: `Watch Rick and Morty (2013) - Action & Adventure, Animation, Comedy, Sci-Fi & Fantasy TVShow: Rick is a mentally-unbalanced but scientifically-gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.`,
+          images: [
+            {
+              url: `http://localhost:3000/poster.png`,
+              width: 800,
+              height: 600,
+              alt: `Rick and Morty Poster`,
+            },
+          ],
+          site_name: `http://localhost:3000`,
+        }}
+        twitter={{
+          handle: `@yasnbouz`,
+          site: `http://localhost:3000`,
+          cardType: `summary_large_image`,
+        }}
+      />
       <Header />
       <main>
         <Hero />
