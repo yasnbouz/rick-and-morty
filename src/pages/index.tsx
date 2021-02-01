@@ -1,7 +1,6 @@
-import Head from 'next/head';
 import { Header, Hero, Episodes, Characters, ScrollTop, Footer } from '@/components';
 
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import { client } from '@/lib/graphqlClient';
 import { GetAllCharactersDocument, GetAllCharactersQuery } from '@/generated/graphql';
 import { QueryClient } from 'react-query';
@@ -9,7 +8,7 @@ import { dehydrate } from 'react-query/hydration';
 import { getAllEpisodes } from '@/hooks';
 import { NextSeo } from 'next-seo';
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const queryClient = new QueryClient();
   const data: GetAllCharactersQuery = await client.request(GetAllCharactersDocument);
   await queryClient.setQueryData([`getAllCharacters`, { page: 1 }], data);
