@@ -1,19 +1,21 @@
 import { Header, Hero, Episodes, Characters, ScrollTop, Footer } from '@/components';
 
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import { client } from '@/lib/graphqlClient';
 import { GetAllCharactersDocument, GetAllCharactersQuery } from '@/generated/graphql';
 import { QueryClient } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
-import { getAllEpisodes } from '@/hooks';
 import { NextSeo } from 'next-seo';
+import { loadData, storePath } from '@/scraping/utils';
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   const queryClient = new QueryClient();
   const data: GetAllCharactersQuery = await client.request(GetAllCharactersDocument);
   await queryClient.setQueryData([`getAllCharacters`, { page: 1 }], data);
-  // fetch episodes on the server
-  await queryClient.prefetchQuery(`getAllEpisodes`, getAllEpisodes);
+
+  // load episodes on the server
+  const episodesData = loadData(storePath);
+  await queryClient.setQueryData(`getAllEpisodes`, JSON.parse(episodesData as string));
 
   return {
     props: {
@@ -29,23 +31,23 @@ export default function Home() {
         title="Watch Rick and Morty (2013)"
         description="Watch Rick and Morty (2013) - Action & Adventure, Animation, Comedy, Sci-Fi & Fantasy TVShow: Rick is a mentally-unbalanced but scientifically-gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school."
         openGraph={{
-          url: `http://localhost:3000`,
+          url: process.env.NEXT_PUBLIC_SITE_HOST,
           type: `website`,
           title: `Watch Rick and Morty (2013)`,
           description: `Watch Rick and Morty (2013) - Action & Adventure, Animation, Comedy, Sci-Fi & Fantasy TVShow: Rick is a mentally-unbalanced but scientifically-gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.`,
           images: [
             {
-              url: `http://localhost:3000/poster.png`,
+              url: `${process.env.NEXT_PUBLIC_SITE_HOST}/poster.png`,
               width: 800,
               height: 600,
               alt: `Rick and Morty Poster`,
             },
           ],
-          site_name: `http://localhost:3000`,
+          site_name: process.env.NEXT_PUBLIC_SITE_HOST,
         }}
         twitter={{
           handle: `@yasnbouz`,
-          site: `http://localhost:3000`,
+          site: process.env.NEXT_PUBLIC_SITE_HOST,
           cardType: `summary_large_image`,
         }}
       />
