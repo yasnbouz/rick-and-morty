@@ -24,7 +24,7 @@ class MyDocument extends Document<Props> {
           <link rel="preload" href="/fonts/Poppins/Poppins-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
           <link rel="preload" href="/fonts/Poppins/Poppins-Medium.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
           <link rel="preload" href="/fonts/Poppins/Poppins-SemiBold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-          <link rel="preload" href="/fonts/Poppins/Poppins-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+          <link rel="preload" href="/fonts/Poppins/Poppins-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
           <link href="/favicon.ico" rel="icon" type="image/x-icon" />
         </Head>
         <body>
