@@ -14,6 +14,23 @@ export default function GlobalCss() {
         body {
           ${tw`bg-blueGray-900 overflow-x-hidden h-full`}
         }
+        * {
+          scrollbar-width: thin;
+          scrollbar-color: ${theme`colors.coolGray.700`} transparent;
+        }
+        *::-webkit-scrollbar {
+          width: 8px; /* width of the entire scrollbar */
+        }
+
+        *::-webkit-scrollbar-track {
+          background: transparent; /* color of the tracking area */
+        }
+
+        *::-webkit-scrollbar-thumb {
+          background-color: ${theme`colors.coolGray.700`}; /* color of the scroll thumb */
+          border-radius: 20px; /* roundness of the scroll thumb */
+        }
+
         #__next {
           min-height: 100%;
           display: flex;
@@ -29,6 +46,7 @@ export default function GlobalCss() {
         ::selection {
           background-color: ${theme`colors.purple.700`};
         }
+
         @font-face {
           font-family: 'Georgia';
           src: url('/fonts/Georgia/Georgia.ttf') format('truetype');
