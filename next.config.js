@@ -1,4 +1,9 @@
-module.exports = {
+const withPreact = require('next-plugin-preact');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+const nextConfig = {
   images: {
     domains: ['rickandmortyapi.com'],
   },
@@ -11,3 +16,4 @@ module.exports = {
     return config;
   },
 };
+module.exports = withBundleAnalyzer(withPreact(nextConfig));

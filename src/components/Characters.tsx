@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'preact/hooks';
 import { ErrorMessage } from '@/components';
 import { StyledCharacters, StyledLoader, StyledSectionTitle } from '@/styles';
 import { useGetAllCharactersQuery } from '@/generated/graphql';

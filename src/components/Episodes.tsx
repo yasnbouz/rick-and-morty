@@ -1,6 +1,6 @@
 import { useGetAllEpisodes, useScrollEnd } from '@/hooks';
 import { StyledEpisodeList, StyledEpisodes, StyledGrid, StyledSeasonList, StyledSectionTitle, StyledVideoContainer } from '@/styles';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { buildSeasons, getEpisodes, getSeasons } from '@/utils';
 import { Player } from '@/components';
 

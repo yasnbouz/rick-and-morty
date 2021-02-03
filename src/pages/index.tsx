@@ -8,7 +8,7 @@ import { dehydrate } from 'react-query/hydration';
 import { NextSeo } from 'next-seo';
 import { loadData, storePath } from '@/scraping/utils';
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient();
   const data: GetAllCharactersQuery = await client.request(GetAllCharactersDocument);
   await queryClient.setQueryData([`getAllCharacters`, { page: 1 }], data);

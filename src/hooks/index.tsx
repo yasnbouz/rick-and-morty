@@ -1,4 +1,5 @@
-import { MutableRefObject, useEffect } from 'react';
+import { useEffect } from 'preact/hooks';
+import { RefObject } from 'preact';
 import { useQuery } from 'react-query';
 
 export function useOnClickOutside({ refMenu, refBurger, callback }): void {
@@ -15,7 +16,7 @@ export function useOnClickOutside({ refMenu, refBurger, callback }): void {
     };
   }, [refMenu.current, refBurger.current]);
 }
-export function useScrollEnd(ref: MutableRefObject<HTMLElement>) {
+export function useScrollEnd(ref: RefObject<HTMLElement>) {
   useEffect(() => {
     const listener = () => {
       const { offsetHeight, scrollHeight } = ref.current;

@@ -1,8 +1,8 @@
 import Plyr from 'plyr';
 import 'plyr/dist/plyr.css';
-import { useEffect } from 'react';
+import { useEffect } from 'preact/hooks';
 
-export default function Player({ url }) {
+export default function Player({ url }: { url: string }) {
   useEffect(() => {
     const player = new Plyr(`#video-plyr`, { volume: 0.3 });
     player.on(`exitfullscreen`, () => {

@@ -2,6 +2,7 @@ const colors = require('tailwindcss/colors');
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
+  purge: ['./src/{components,pages,styles}/**/*.{js,jsx,ts,tsx}'],
   theme: {
     colors: {
       transparent: 'transparent',

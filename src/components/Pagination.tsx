@@ -1,13 +1,9 @@
 import { StyledPagination } from '@/styles';
-import { useCallback, useState } from 'react';
+import { useCallback, useState } from 'preact/hooks';
 import locale from 'rc-pagination/lib/locale/en_US';
 import { NextIcon, PrevIcon } from '@/components';
 import 'twin.macro';
 
-function sleep(ms) {
-  const start = Date.now();
-  while (Date.now() - start < ms);
-}
 type PaginationProps = {
   page: number;
   setPage: (page: number) => void;
