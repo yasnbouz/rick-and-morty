@@ -1,14 +1,18 @@
 {
-  "name": "typescript-nextjs-starter",
-  "description": "A TypeScript starter for Next.js that includes all you need to build amazing projects",
+  "name": "rick-and-morty",
+  "description": "Watch Rick and Morty (2013)",
   "version": "1.0.0",
   "private": true,
-  "author": "João Pedro Schmitz <oi@joaopedro.cc> (joaopedro.cc)",
+  "author": "@yasnbouz",
   "license": "MIT",
   "keywords": [
     "nextjs",
     "starter",
-    "typescript"
+    "typescript",
+    "graphql",
+    "react query",
+    "twin macro",
+    "framer motion"
   ],
   "scripts": {
     "dev": "next",
@@ -38,6 +42,7 @@
     "@emotion/react": "11.1.4",
     "@emotion/server": "11.0.0",
     "@emotion/styled": "11.0.0",
+    "framer-motion": "3.3.0",
     "graphql": "15.4.0",
     "graphql-request": "3.4.0",
     "next": "10.0.4",
@@ -49,6 +54,7 @@
     "rc-pagination": "3.1.3",
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",
+    "react-intersection-observer": "8.31.0",
     "react-query": "3.5.12",
     "react-ssr-prepass": "npm:preact-ssr-prepass",
     "tailwindcss": "2.0.2",

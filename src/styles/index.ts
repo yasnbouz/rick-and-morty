@@ -34,11 +34,10 @@ const overlayStyle = css`
 `;
 
 const containerStyle = css`
-  max-width: 90%;
+  max-width: 80rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   margin: 0 auto;
-  @media (min-width: 86.25em) {
-    max-width: 80rem;
-  }
 `;
 const TextShadowStyle = css`
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
@@ -68,13 +67,13 @@ export const StyledMenu = styled.ul<MenuProps>`
       ${tw`mb-12`};
     }
   }
-  button {
+  li {
     color: #fff;
     position: relative;
     &::before {
       content: '';
       position: absolute;
-      bottom: -12px;
+      bottom: -4px;
       left: 0;
       width: 100%;
       height: 4px;
@@ -324,7 +323,7 @@ export const StyledEpisodeList = styled.aside`
   }
 `;
 export const StyledVideoContainer = styled.div`
-  ${tw`lg:(col-start-1 col-end-3 row-start-2)`}
+  ${tw`overflow-hidden lg:(col-start-1 col-end-3 row-start-2)`}
   > div {
     width: 100%;
     padding-top: 56.25%;

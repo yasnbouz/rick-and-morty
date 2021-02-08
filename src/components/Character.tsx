@@ -1,16 +1,19 @@
 import { Character as CharacterProps } from '@/generated/graphql';
 import { StyledCharacterImg, StyledCharacterName, StyledCharacterOrigin, StyledCharacterStatus, StyledEpisodeName } from '@/styles';
 import Image from 'next/image';
+import { useInView } from 'react-intersection-observer';
 import tw from 'twin.macro';
+import { FadeUp } from './animations';
 
 export default function Character(props: CharacterProps) {
+  const { ref, inView } = useInView({ initialInView: false, threshold: 0, triggerOnce: true });
   const { name, gender, species, image, status, episode, origin } = props;
   return (
-    <div tw="flex flex-col items-center w-64 bg-blueGray-800 rounded-lg shadow-xl lg:(w-full max-w-2xl flex-row pr-4)">
+    <FadeUp ref={ref} inView={inView} revealOnScroll custom={0} tw="flex flex-col items-center w-64 bg-blueGray-800 rounded-lg shadow-xl lg:(w-full max-w-2xl flex-row pr-4)">
       <StyledCharacterImg>
         <Image src={image} width="150" height="150" layout="fixed" loading="lazy" alt={`${name} image`} />
       </StyledCharacterImg>
-      <div tw="p-5 ml-5 self-start lg:( ml-24 p-4)">
+      <div tw="p-5 ml-5 self-start lg:(ml-24 p-4)">
         <StyledCharacterName title={name}>{name}</StyledCharacterName>
         <div tw="flex items-center space-x-4 mt-1">
           <span
@@ -40,6 +43,6 @@ export default function Character(props: CharacterProps) {
           </StyledEpisodeName>
         </div>
       </div>
-    </div>
+    </FadeUp>
   );
 }

@@ -3,16 +3,23 @@ import { ErrorMessage } from '@/components';
 import { StyledCharacters, StyledLoader, StyledSectionTitle } from '@/styles';
 import { useGetAllCharactersQuery } from '@/generated/graphql';
 import { client } from '@/lib/graphqlClient';
+import { useInView } from 'react-intersection-observer';
 import Pagination from './Pagination';
 import Character from './Character';
+import { BlockReveal } from './animations';
 import 'twin.macro';
 
 export default function Characters() {
+  const { ref, inView } = useInView({ threshold: 0, initialInView: false, triggerOnce: true });
   const [page, setPage] = useState(1);
   const { data, isLoading, isError, error } = useGetAllCharactersQuery(client, { page }, { keepPreviousData: true });
   return (
-    <StyledCharacters>
-      <StyledSectionTitle id="characters">Characters</StyledSectionTitle>
+    <StyledCharacters ref={ref}>
+      <StyledSectionTitle id="characters">
+        <BlockReveal delay={0} inView={inView} revealOnScroll>
+          Characters
+        </BlockReveal>
+      </StyledSectionTitle>
       {isError ? (
         <ErrorMessage error={error} />
       ) : isLoading ? (

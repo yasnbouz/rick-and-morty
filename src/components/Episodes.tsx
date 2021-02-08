@@ -3,8 +3,11 @@ import { StyledEpisodeList, StyledEpisodes, StyledGrid, StyledSeasonList, Styled
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { buildSeasons, getEpisodes, getSeasons } from '@/utils';
 import { Player } from '@/components';
+import { useInView } from 'react-intersection-observer';
+import { BlockReveal, FadeRight, FadeUp } from './animations';
 
 export default function Episodes() {
+  const { ref, inView } = useInView({ initialInView: false, threshold: 0.2, triggerOnce: true });
   const { data } = useGetAllEpisodes();
   const seasonsData = useMemo(() => buildSeasons(data), [data]);
   const listRef = useRef<HTMLUListElement>(null);
@@ -19,15 +22,21 @@ export default function Episodes() {
   }, [episodes]);
 
   return (
-    <StyledEpisodes>
-      <StyledSectionTitle id="episodes">Episodes</StyledSectionTitle>
+    <StyledEpisodes ref={ref}>
+      <StyledSectionTitle id="episodes">
+        <BlockReveal delay={0} inView={inView} revealOnScroll>
+          Episodes
+        </BlockReveal>
+      </StyledSectionTitle>
       <StyledGrid>
         <StyledSeasonList>
-          {seasons?.map((season) => (
+          {seasons?.map((season, i) => (
             <li key={season}>
-              <button type="button" className={`${selectedSeason === season ? `activeSe` : ``}`} onClick={() => setSelectedSeason(season)}>
-                {season}
-              </button>
+              <FadeRight custom={i} inView={inView} revealOnScroll>
+                <button type="button" className={`${selectedSeason === season ? `activeSe` : ``}`} onClick={() => setSelectedSeason(season)}>
+                  {season}
+                </button>
+              </FadeRight>
             </li>
           ))}
         </StyledSeasonList>
@@ -37,12 +46,14 @@ export default function Episodes() {
         <StyledEpisodeList>
           <h3>Episodes</h3>
           <ul ref={listRef}>
-            {episodes?.map((ep) => (
+            {episodes?.map((ep, i) => (
               <li key={ep.name}>
-                <button type="button" className={`${ep.title === selectedEp.title ? `activeEp` : ``}`} title={ep.title} onClick={() => setSelectedEp(ep)}>
-                  <span>{ep.name} : </span>
-                  <span>{ep.title}</span>
-                </button>
+                <FadeUp custom={i} inView={inView} revealOnScroll>
+                  <button type="button" className={`${ep.title === selectedEp.title ? `activeEp` : ``}`} title={ep.title} onClick={() => setSelectedEp(ep)}>
+                    <span>{ep.name} : </span>
+                    <span>{ep.title}</span>
+                  </button>
+                </FadeUp>
               </li>
             ))}
           </ul>

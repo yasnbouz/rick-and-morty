@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'preact/hooks';
 import { StyledBurger, StyledNav, StyledMenu } from '@/styles/index';
 import { useOnClickOutside } from '@/hooks';
+import { BlockReveal } from './animations';
 
 export default function Menu() {
   const [open, setOpen] = useState(false);
@@ -20,14 +21,18 @@ export default function Menu() {
       </StyledBurger>
       <StyledMenu ref={refMenu} open={open}>
         <li>
-          <button type="button" onClick={() => scrollIntoView(`episodes`)}>
-            Episodes
-          </button>
+          <BlockReveal delay={0.25}>
+            <button type="button" onClick={() => scrollIntoView(`episodes`)}>
+              Episodes
+            </button>
+          </BlockReveal>
         </li>
         <li>
-          <button type="button" onClick={() => scrollIntoView(`characters`)}>
-            Characters
-          </button>
+          <BlockReveal delay={0.5}>
+            <button type="button" onClick={() => scrollIntoView(`characters`)}>
+              Characters
+            </button>
+          </BlockReveal>
         </li>
       </StyledMenu>
     </StyledNav>
