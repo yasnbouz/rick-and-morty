@@ -1,0 +1,27 @@
+{
+    "theme_color": "#fff",
+    "background_color": "#333",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Watch Rick and Morty (2013)",
+    "short_name": "Rick and Morty",
+    "icons": [
+        {
+            "src": "/icons/pwa-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/maskable-icon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icons/pwa-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
