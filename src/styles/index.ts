@@ -133,7 +133,6 @@ export const StyledBurger = styled.button<MenuProps>`
 
 export const StyledHero = styled.section`
   position: relative;
-  object-fit: cover;
   z-index: 1;
   padding: 4rem 0;
   ${overlayStyle};
