@@ -16,6 +16,7 @@ export default function Episodes() {
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const episodes = useMemo(() => getEpisodes(seasonsData, selectedSeason), [seasonsData, selectedSeason]);
   const [selectedEp, setSelectedEp] = useState(() => episodes[0]);
+
   useEffect(() => {
     setSelectedEp(episodes[0]);
   }, [episodes]);
@@ -40,7 +41,7 @@ export default function Episodes() {
           ))}
         </StyledSeasonList>
         <StyledVideoContainer>
-          <Player url={selectedEp.video} key={selectedEp.name} />
+          <Player url={selectedEp.video} key={selectedEp.title} />
         </StyledVideoContainer>
         <StyledEpisodeList>
           <h3>Episodes</h3>
