@@ -8,6 +8,7 @@ import { dehydrate } from 'react-query/hydration';
 import { NextSeo } from 'next-seo';
 import { loadData, storePath } from '@/scraping/utils';
 import { m as motion } from 'framer-motion';
+import { ScrapData } from '@/scraping';
 
 export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -15,10 +16,12 @@ export const getStaticProps: GetStaticProps = async () => {
   await queryClient.setQueryData([`getAllCharacters`, { page: 1 }], data);
 
   // load episodes on the server
+  await ScrapData();
   const episodesData = loadData(storePath);
   await queryClient.setQueryData(`getAllEpisodes`, JSON.parse(episodesData as string));
 
   return {
+    revalidate: 24 * 3600,
     props: {
       dehydratedState: dehydrate(queryClient),
     },

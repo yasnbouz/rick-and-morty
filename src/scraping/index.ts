@@ -4,7 +4,7 @@ import pMap from 'p-map';
 import { storeData, storePath } from './utils';
 
 async function withBrowser(fn) {
-  const browser = await pw.firefox.launch();
+  const browser = await pw.chromium.launch();
   const context = await browser.newContext();
   try {
     return await fn(context);
