@@ -6,7 +6,7 @@ export default function ScrollTop() {
   useEffect(() => {
     const listener = () => {
       const { clientHeight, scrollHeight, scrollTop } = document.documentElement;
-      if (Math.ceil(scrollTop) + clientHeight < scrollHeight) {
+      if (Math.ceil(scrollTop) + clientHeight < scrollHeight - 120) {
         setShow(false);
         return;
       }

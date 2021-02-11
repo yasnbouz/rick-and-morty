@@ -10,6 +10,7 @@ const nextConfig = {
     domains: ['rickandmortyapi.com'],
   },
   pwa: {
+    disable: process.env.NODE_ENV === 'development',
     dest: 'public',
     runtimeCaching,
   },

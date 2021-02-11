@@ -322,13 +322,16 @@ export const StyledEpisodeList = styled.aside`
   }
 `;
 export const StyledVideoContainer = styled.div`
-  ${tw`overflow-hidden lg:(col-start-1 col-end-3 row-start-2)`}
-  > div {
+  ${tw` lg:(col-start-1 col-end-3 row-start-2)`};
+  .player-poster[data-poster] .play-wrapper[data-poster] {
+    width: auto;
+  }
+  .aspect-ratio {
     width: 100%;
     padding-top: 56.25%;
     height: 0px;
     position: relative;
-    .plyr {
+    > * {
       width: 100%;
       height: 100%;
       position: absolute;

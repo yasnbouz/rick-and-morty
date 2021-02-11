@@ -1,22 +1,21 @@
-import Plyr from 'plyr';
-import 'plyr/dist/plyr.css';
-import { useEffect } from 'preact/hooks';
+/* eslint-disable jsx-a11y/media-has-caption */
+import { useEffect, useRef } from 'preact/hooks';
 
 export default function Player({ url }: { url: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
-    const player = new Plyr(`#video-plyr`, { volume: 0.3 });
-    player.on(`exitfullscreen`, () => {
-      document.getElementById(`episodes`).scrollIntoView({ behavior: `auto` });
-    });
-    return () => {
-      player.destroy();
+    const stopScrolling = () => {
+      if (!document.fullscreenElement) {
+        document.getElementById(`episodes`).scrollIntoView({ behavior: `auto` });
+      }
     };
+    videoRef.current.addEventListener(`webkitfullscreenchange`, stopScrolling);
   }, []);
   return (
-    <div>
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <video id="video-plyr" playsInline controls>
-        <source src={url} type="video/mp4" />
+    <div className="aspect-ratio">
+      <video ref={videoRef} playsInline controls width="100%" height="100%">
+        <source type="video/mp4" src={url} />
       </video>
     </div>
   );
