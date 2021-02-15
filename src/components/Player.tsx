@@ -14,7 +14,7 @@ export default function Player({ url }: { url: string }) {
   }, []);
   return (
     <div className="aspect-ratio">
-      <video ref={videoRef} playsInline controls width="100%" height="100%">
+      <video preload="auto" ref={videoRef} playsInline controls width="100%" height="100%">
         <source type="video/mp4" src={url} />
       </video>
     </div>
