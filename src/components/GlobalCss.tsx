@@ -29,6 +29,9 @@ export default function GlobalCss() {
         *::-webkit-scrollbar-thumb {
           background-color: ${theme`colors.coolGray.700`}; /* color of the scroll thumb */
           border-radius: 20px; /* roundness of the scroll thumb */
+          &:hover {
+            background-color: ${theme`colors.amber.400`}; /* color of the scroll thumb */
+          }
         }
 
         #__next {
