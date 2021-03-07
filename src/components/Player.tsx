@@ -1,22 +1,7 @@
-/* eslint-disable jsx-a11y/media-has-caption */
-import { useEffect, useRef } from 'preact/hooks';
-
-export default function Player({ url }: { url: string }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const stopScrolling = () => {
-      if (!document.fullscreenElement) {
-        document.getElementById(`episodes`).scrollIntoView({ behavior: `auto` });
-      }
-    };
-    videoRef.current.addEventListener(`webkitfullscreenchange`, stopScrolling);
-  }, []);
+export default function Player({ url, title }: { url: string; title: string }) {
   return (
-    <div className="aspect-ratio">
-      <video preload="auto" ref={videoRef} playsInline controls width="100%" height="100%">
-        <source type="video/mp4" src={url} />
-      </video>
+    <div className="aspect-ratio" style={{ backgroundColor: `black` }}>
+      <iframe sandbox="allow-scripts" src={url} scrolling="no" frameBorder="1" height="100%" width="100%" allowFullScreen title={title} />
     </div>
   );
 }

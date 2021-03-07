@@ -1,7 +1,7 @@
 export type MyEpisode = {
   name: string;
   title: string;
-  video: string;
+  frame: string;
 };
 
 export type Season = {
@@ -11,7 +11,7 @@ export type Season = {
 interface IData {
   season: string;
   episode: string;
-  video: string;
+  frame: string;
 }
 export function buildSeasons(data: IData[]): Season[] {
   let seasonIndex = 0;
@@ -21,7 +21,7 @@ export function buildSeasons(data: IData[]): Season[] {
     const semiIndex = cur.episode.indexOf(`:`);
     const episodeName = cur.episode.slice(0, semiIndex).trim();
     const episodeTitle = cur.episode.slice(semiIndex + 1).trim();
-    const episode = { name: episodeName, title: episodeTitle, video: cur.video };
+    const episode = { name: episodeName, title: episodeTitle, frame: cur.frame };
     const season = { season: cur.season, episodes: [episode] };
 
     if (acc[prevSeasonIndex]?.season !== cur.season) {

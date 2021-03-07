@@ -41,7 +41,7 @@ export default function Episodes() {
           ))}
         </StyledSeasonList>
         <StyledVideoContainer>
-          <Player url={selectedEp.video} key={selectedEp.title} />
+          <Player url={selectedEp.frame} title={selectedEp.title} key={selectedEp.title} />
         </StyledVideoContainer>
         <StyledEpisodeList>
           <h3>Episodes</h3>

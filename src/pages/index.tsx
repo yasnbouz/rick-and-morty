@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async () => {
   await queryClient.setQueryData(`getAllEpisodes`, JSON.parse(episodesData as string));
 
   return {
-    revalidate: 24 * 3600,
+    revalidate: 60 * 60 * 24,
     props: {
       dehydratedState: dehydrate(queryClient),
     },
