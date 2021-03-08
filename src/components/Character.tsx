@@ -13,7 +13,7 @@ export default function Character(props: CharacterProps) {
       <StyledCharacterImg>
         <Image src={image} width="150" height="150" layout="fixed" loading="lazy" alt={`${name} image`} />
       </StyledCharacterImg>
-      <div tw="p-5 ml-5 self-start lg:(ml-24 p-4)">
+      <div tw="p-5 ml-5 self-start overflow-auto lg:(ml-24 p-4)">
         <StyledCharacterName title={name}>{name}</StyledCharacterName>
         <div tw="flex items-center space-x-4 mt-1">
           <span

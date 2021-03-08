@@ -273,6 +273,7 @@ export const StyledEpisodeList = styled.aside`
     display: block;
     background: linear-gradient(to top, rgba(15, 23, 42, 1) 0%, rgb(15, 23, 42, 0) 100%);
     transition: transform 0.5s linear;
+    pointer-events: none;
   }
   &.scrollEnd:after {
     transform: translateY(100%);
