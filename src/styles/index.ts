@@ -29,7 +29,7 @@ const overlayStyle = css`
     right: 0;
     bottom: 0;
     z-index: 2;
-    background: linear-gradient(90deg, hsla(222, 47%, 11%, 100%) 0%, hsla(222, 47%, 11%, 90%) 100%);
+    background: linear-gradient(90deg, hsla(226, 44%, 8%, 100%) 0%, hsla(226, 44%, 8%, 90%) 100%);
   }
 `;
 
@@ -49,7 +49,7 @@ const primaryGradient = ({ whiteness = 0.2, color }: { whiteness?: number; color
 
 // header styles
 export const StyledHeader = styled.header`
-  ${tw`bg-blueGray-900 text-white flex justify-between items-center text-2xl relative`}
+  ${tw`bg-background-100 text-white flex justify-between items-center text-2xl relative`}
   height:6.25rem;
   width: 100%;
   ${containerStyle}
@@ -60,7 +60,7 @@ export const StyledMenu = styled.ul<MenuProps>`
   @media screen and (max-width: 768px) {
     width: 220px;
     height: 200px;
-    ${tw`flex flex-col justify-center items-center rounded-2xl absolute top-full left-full bg-bg transform transition mt-2`}
+    ${tw`flex flex-col justify-center items-center rounded-2xl absolute top-full left-full bg-background-200 transform transition mt-2`}
     ${({ open }) => (open ? tw`opacity-100 -translate-x-full` : tw`opacity-0 translate-x-0`)}
       ${({ open }) => open && dividerStyle}
       li:first-of-type {
@@ -469,7 +469,7 @@ const heartAnimation = keyframes`
 }
 `;
 export const StyledFooter = styled.footer`
-  ${tw`bg-bg font-medium grid place-items-center`}
+  ${tw`bg-background-200 font-medium grid place-items-center`}
   height:6.25rem;
   display: flex;
   justify-content: center;

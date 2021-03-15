@@ -7,7 +7,8 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      bg: '#0E1324',
+      'background-100': 'hsl(226, 44%, 8%)',
+      'background-200': 'hsl(226, 44%, 6%)',
       black: '#303030',
       white: '#fff',
       blueGray: colors.blueGray,

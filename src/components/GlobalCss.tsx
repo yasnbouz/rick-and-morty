@@ -12,7 +12,7 @@ export default function GlobalCss() {
           ${tw`font-sans h-full`}
         }
         body {
-          ${tw`bg-blueGray-900 overflow-x-hidden h-full`}
+          ${tw`bg-background-100 overflow-x-hidden h-full`}
         }
         * {
           scrollbar-width: thin;
