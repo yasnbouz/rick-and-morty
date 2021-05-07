@@ -2,12 +2,22 @@ import { useGetAllEpisodes, useScrollEnd } from '@/hooks';
 import { StyledEpisodeList, StyledEpisodes, StyledGrid, StyledSeasonList, StyledSectionTitle, StyledVideoContainer } from '@/styles';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { buildSeasons, getEpisodes, getSeasons } from '@/utils';
-import { Player } from '@/components';
 import { useInView } from 'react-intersection-observer';
+import dynamic from 'next/dynamic';
 import { BlockReveal, FadeRight, FadeUp } from './animations';
 
+const Player = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "My-Player" */
+      // eslint-disable-next-line
+      './Player'
+    ),
+  { ssr: false },
+);
+
 export default function Episodes() {
-  const { ref, inView } = useInView({ initialInView: false, threshold: 0.2, triggerOnce: true });
+  const { ref, inView } = useInView({ initialInView: false, threshold: 0.4, triggerOnce: true });
   const { data } = useGetAllEpisodes();
   const seasonsData = useMemo(() => buildSeasons(data), [data]);
   const listRef = useRef<HTMLUListElement>(null);
@@ -40,9 +50,7 @@ export default function Episodes() {
             </li>
           ))}
         </StyledSeasonList>
-        <StyledVideoContainer>
-          <Player url={selectedEp.frame} title={selectedEp.title} key={selectedEp.title} />
-        </StyledVideoContainer>
+        <StyledVideoContainer>{inView && <Player url={selectedEp.frame} title={selectedEp.title} key={selectedEp.title} />}</StyledVideoContainer>
         <StyledEpisodeList>
           <h3>Episodes</h3>
           <ul ref={listRef}>
