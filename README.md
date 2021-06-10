@@ -8,5 +8,5 @@
 - [graphql-request](https://github.com/prisma-labs/graphql-request) ( Minimal GraphQL client supporting Node and browsers for scripts or simple apps )
 - [react-query](https://github.com/tannerlinsley/react-query): ( Hooks for fetching, caching and updating asynchronous data in React )
 - [framer-motion](https://github.com/framer/motion) : animation
-- [Playwright](https://github.com/microsoft/playwright) : scraping data
+- [Playwright](https://github.com/microsoft/playwright) : scraping data just for educational purposes
 - [Vercel](https://vercel.com/) : Deploy & Hosting
