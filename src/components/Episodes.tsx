@@ -1,7 +1,9 @@
 import { useGetAllEpisodes, useScrollEnd } from '@/hooks';
 import { StyledEpisodeList, StyledEpisodes, StyledGrid, StyledSeasonList, StyledSectionTitle, StyledVideoContainer } from '@/styles';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import { buildSeasons, getEpisodes, getSeasons } from '@/utils';
+import { useRef } from 'preact/hooks';
+import { buildSeasons } from '@/utils';
+import { animeMachine } from '@/machines';
+import { useMachine } from '@xstate/react';
 import { useInView } from 'react-intersection-observer';
 import dynamic from 'next/dynamic';
 import { BlockReveal, FadeRight, FadeUp } from './animations';
@@ -19,18 +21,10 @@ const Player = dynamic(
 export default function Episodes() {
   const { ref, inView } = useInView({ initialInView: false, threshold: 0.4, triggerOnce: true });
   const { data } = useGetAllEpisodes();
-  const seasonsData = useMemo(() => buildSeasons(data), [data]);
+  const [state, send] = useMachine(animeMachine, { context: { data: buildSeasons(data) } });
+  const { seasons, currentSeason, episodes, currentEpisode } = state.context;
   const listRef = useRef<HTMLUListElement>(null);
   useScrollEnd(listRef);
-  const seasons = useMemo(() => getSeasons(seasonsData), [seasonsData]);
-  const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
-  const episodes = useMemo(() => getEpisodes(seasonsData, selectedSeason), [seasonsData, selectedSeason]);
-  const [selectedEp, setSelectedEp] = useState(() => episodes[0]);
-
-  useEffect(() => {
-    setSelectedEp(episodes[0]);
-  }, [episodes]);
-
   return (
     <StyledEpisodes ref={ref}>
       <StyledSectionTitle id="episodes">
@@ -43,23 +37,28 @@ export default function Episodes() {
           {seasons?.map((season, i) => (
             <li key={season}>
               <FadeRight custom={i} inView={inView} revealOnScroll>
-                <button type="button" className={`${selectedSeason === season ? `activeSe` : ``}`} onClick={() => setSelectedSeason(season)}>
+                <button type="button" className={`${currentSeason === season ? `activeSe` : ``}`} onClick={() => send({ type: `setCurrentSeason`, season })}>
                   {season}
                 </button>
               </FadeRight>
             </li>
           ))}
         </StyledSeasonList>
-        <StyledVideoContainer>{inView && <Player url={selectedEp.frame} title={selectedEp.title} key={selectedEp.title} />}</StyledVideoContainer>
+        <StyledVideoContainer>{inView && <Player url={currentEpisode.frame} title={currentEpisode.title} key={currentEpisode.title} />}</StyledVideoContainer>
         <StyledEpisodeList>
           <h3>Episodes</h3>
           <ul ref={listRef}>
-            {episodes?.map((ep, i) => (
-              <li key={ep.name}>
+            {episodes?.map((episode, i) => (
+              <li key={episode.name}>
                 <FadeUp custom={i} inView={inView} revealOnScroll>
-                  <button type="button" className={`${ep.title === selectedEp.title ? `activeEp` : ``}`} title={ep.title} onClick={() => setSelectedEp(ep)}>
-                    <span>{ep.name} : </span>
-                    <span>{ep.title}</span>
+                  <button
+                    type="button"
+                    className={`${episode.title === currentEpisode.title ? `activeEp` : ``}`}
+                    title={episode.title}
+                    onClick={() => send({ type: `setCurrentEpisode`, episode })}
+                  >
+                    <span>{episode.name} : </span>
+                    <span>{episode.title}</span>
                   </button>
                 </FadeUp>
               </li>
