@@ -80,7 +80,7 @@ export const FadeUp = forwardRef<HTMLDivElement, MotionAdvancedProps & Props>(({
   }, [revealOnScroll]);
 
   return (
-    <motion.div ref={ref} initial="hidden" animate={controls} variants={variants} {...props}>
+    <motion.div initial="hidden" animate={controls} variants={variants} {...props} ref={ref}>
       {children}
     </motion.div>
   );

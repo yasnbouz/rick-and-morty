@@ -1,12 +1,12 @@
-import { Character as CharacterProps } from '@/generated/graphql';
-import { StyledCharacterImg, StyledCharacterName, StyledCharacterOrigin, StyledCharacterStatus, StyledEpisodeName } from '@/styles';
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import tw from 'twin.macro';
+import { StyledCharacterImg, StyledCharacterName, StyledCharacterOrigin, StyledCharacterStatus, StyledEpisodeName } from '@/styles';
+import { Character as CharacterProps } from '@/generated/graphql';
 import { FadeUp } from './animations';
 
 export default function Character(props: CharacterProps) {
-  const { ref, inView } = useInView({ initialInView: false, threshold: 0, triggerOnce: true });
+  const { ref, inView }: { ref: any; inView: boolean } = useInView({ initialInView: false, threshold: 0, triggerOnce: true });
   const { name, gender, species, image, status, episode, origin } = props;
   return (
     <FadeUp ref={ref} inView={inView} revealOnScroll custom={0} tw="flex flex-col items-center w-64 bg-blueGray-800 rounded-lg shadow-xl lg:(w-full max-w-2xl flex-row pr-4)">
