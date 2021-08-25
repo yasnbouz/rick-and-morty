@@ -1,13 +1,12 @@
-import { Header, Hero, Episodes, Characters, ScrollTop, Footer } from '@/components';
-
 import { GetStaticProps } from 'next';
-import { client } from '@/lib/graphqlClient';
-import { GetAllCharactersDocument, GetAllCharactersQuery } from '@/generated/graphql';
 import { QueryClient } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
 import { NextSeo } from 'next-seo';
-import { loadData, storePath } from '@/scraping/utils';
 import { m as motion } from 'framer-motion';
+import { loadData, storePath } from '@/scraping/utils';
+import { GetAllCharactersDocument, GetAllCharactersQuery } from '@/generated/graphql';
+import { client } from '@/lib/graphqlClient';
+import { Header, Hero, Episodes, Characters, ScrollTop, Footer } from '@/components';
 import { ScrapData } from '@/scraping';
 
 export const getStaticProps: GetStaticProps = async () => {
