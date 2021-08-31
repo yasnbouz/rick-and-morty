@@ -1,10 +1,10 @@
 import { AppProps } from 'next/app';
 import { GlobalStyles } from 'twin.macro';
-import { GlobalCss } from '@/components';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Hydrate } from 'react-query/hydration';
 import { useRouter } from 'next/router';
 import { AnimatePresence, MotionConfig, AnimationFeature, ExitFeature } from 'framer-motion';
+import { GlobalCss } from '@/components';
 
 function handleExitComplete() {
   if (typeof window !== `undefined`) {

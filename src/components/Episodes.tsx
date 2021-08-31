@@ -1,11 +1,11 @@
-import { useGetAllEpisodes, useScrollEnd } from '@/hooks';
-import { StyledEpisodeList, StyledEpisodes, StyledGrid, StyledSeasonList, StyledSectionTitle, StyledVideoContainer } from '@/styles';
 import { useRef } from 'preact/hooks';
-import { buildSeasons } from '@/utils';
-import { animeMachine } from '@/machines';
 import { useMachine } from '@xstate/react';
 import { useInView } from 'react-intersection-observer';
 import dynamic from 'next/dynamic';
+import { useGetAllEpisodes, useScrollEnd } from '@/hooks';
+import { StyledEpisodeList, StyledEpisodes, StyledGrid, StyledSeasonList, StyledSectionTitle, StyledVideoContainer } from '@/styles';
+import { buildSeasons } from '@/utils';
+import { animeMachine } from '@/machines';
 import { BlockReveal, FadeRight, FadeUp } from './animations';
 
 const Player = dynamic(

@@ -1,9 +1,9 @@
 import { useState } from 'preact/hooks';
+import { useInView } from 'react-intersection-observer';
 import { ErrorMessage } from '@/components';
 import { StyledCharacters, StyledLoader, StyledSectionTitle } from '@/styles';
 import { useGetAllCharactersQuery } from '@/generated/graphql';
 import { client } from '@/lib/graphqlClient';
-import { useInView } from 'react-intersection-observer';
 import Pagination from './Pagination';
 import Character from './Character';
 import { BlockReveal } from './animations';

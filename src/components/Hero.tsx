@@ -1,5 +1,5 @@
-import { StyledContent, StyledHero, StyledHeroContainer, StyledPoster } from '@/styles';
 import Image from 'next/image';
+import { StyledContent, StyledHero, StyledHeroContainer, StyledPoster } from '@/styles';
 import { FadeUp, FadeLeft } from '@/components/animations';
 
 export default function Hero() {

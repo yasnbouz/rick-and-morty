@@ -1,6 +1,6 @@
-import { StyledPagination } from '@/styles';
 import { useCallback, useState } from 'preact/hooks';
 import locale from 'rc-pagination/lib/locale/en_US';
+import { StyledPagination } from '@/styles';
 import { NextIcon, PrevIcon } from '@/components';
 import 'twin.macro';
 
