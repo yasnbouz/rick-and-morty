@@ -49,7 +49,7 @@
     "next": "11.1.0",
     "next-plugin-preact": "3.0.6",
     "next-pwa": "5.0.5",
-    "next-seo": "4.18.0",
+    "next-seo": "4.26.0",
     "preact": "10.5.14",
     "preact-render-to-string": "5.1.19",
     "rc-pagination": "3.1.9",
