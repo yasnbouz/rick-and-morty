@@ -56,7 +56,7 @@
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",
     "react-intersection-observer": "8.32.1",
-    "react-query": "3.5.12",
+    "react-query": "3.21.1",
     "react-ssr-prepass": "npm:preact-ssr-prepass",
     "tailwindcss": "2.0.2",
     "twin.macro": "2.0.6",
