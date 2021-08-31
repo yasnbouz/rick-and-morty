@@ -59,7 +59,7 @@
     "react-query": "3.5.12",
     "react-ssr-prepass": "npm:preact-ssr-prepass",
     "tailwindcss": "2.0.2",
-    "twin.macro": "2.0.6",
+    "twin.macro": "2.7.0",
     "xstate": "4.23.1"
   },
   "devDependencies": {
