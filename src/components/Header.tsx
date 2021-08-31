@@ -1,6 +1,6 @@
-import { StyledHeader } from '@/styles/index';
 import Link from 'next/link';
 import Image from 'next/image';
+import { StyledHeader } from '@/styles/index';
 import { Menu } from '@/components';
 import { BlockReveal } from '@/components/animations';
 

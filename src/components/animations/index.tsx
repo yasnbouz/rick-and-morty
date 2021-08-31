@@ -121,9 +121,10 @@ export const FadeLeft: FunctionComponent<Props> = ({ children, inView, revealOnS
 
 export const FadeRight: FunctionComponent<MotionAdvancedProps & Props> = ({ children, inView, revealOnScroll = false, delay = 0, ...props }) => {
   const controls = useAnimation();
-  const variants: Variants = useMemo(() => ({ hidden: { opacity: 0, x: 100 }, visible: (i) => ({ opacity: 1, x: 0, transition: { duration: 1.3, delay: i * 0.3 + delay } }) }), [
-    delay,
-  ]);
+  const variants: Variants = useMemo(
+    () => ({ hidden: { opacity: 0, x: 100 }, visible: (i) => ({ opacity: 1, x: 0, transition: { duration: 1.3, delay: i * 0.3 + delay } }) }),
+    [delay],
+  );
 
   useEffect(() => {
     if (revealOnScroll) {
