@@ -43,7 +43,7 @@
     "@emotion/server": "11.0.0",
     "@emotion/styled": "11.0.0",
     "@xstate/react": "1.5.1",
-    "framer-motion": "3.3.0",
+    "framer-motion": "4.1.17",
     "graphql": "15.4.0",
     "graphql-request": "3.4.0",
     "next": "11.1.0",
