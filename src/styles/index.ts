@@ -61,7 +61,7 @@ export const StyledMenu = styled.ul<MenuProps>`
     width: 220px;
     height: 200px;
     ${tw`flex flex-col justify-center items-center rounded-2xl absolute top-full left-full bg-background-200 transform transition mt-2`}
-    ${({ open }) => (open ? tw`opacity-100 -translate-x-full` : tw`opacity-0 translate-x-0`)}
+    ${({ open }) => (open ? tw`opacity-100 -translate-x-full flex` : tw`opacity-0 translate-x-0 hidden`)}
       ${({ open }) => open && dividerStyle}
       li:first-of-type {
       ${tw`mb-12`};

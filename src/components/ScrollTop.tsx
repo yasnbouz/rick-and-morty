@@ -26,7 +26,7 @@ export default function ScrollTop() {
       type="button"
       onClick={() => scrollTop()}
       aria-label="scroll to top"
-      tw="bg-transparent py-2 px-4 rounded-md absolute bottom-4 right-0 transition-all ease-linear transform -rotate-90"
+      tw="bg-transparent py-2 px-4 rounded-md absolute bottom-3 right-0 transition-all ease-linear transform -rotate-90"
       css={[show ? tw`opacity-100 -translate-x-8 scale-100` : tw`opacity-0 scale-0`]}
     >
       <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="#fff" width="24" height="24" viewBox="0 0 24 24">
