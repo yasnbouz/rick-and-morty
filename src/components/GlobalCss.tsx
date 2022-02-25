@@ -9,7 +9,7 @@ export default function GlobalCss() {
           --plyr-color-main: ${theme`colors.amber.400`};
         }
         html {
-          ${tw`font-sans h-full`}
+          ${tw`h-full`}
         }
         body {
           ${tw`bg-background-100 overflow-x-hidden h-full`}
@@ -55,28 +55,28 @@ export default function GlobalCss() {
           src: url('/fonts/Georgia/Georgia.woff2') format('woff2');
           font-style: normal;
           font-weight: 400;
-          font-display: optional;
+          font-display: swap;
         }
         @font-face {
           font-family: 'Poppins';
           src: url('/fonts/Poppins/Poppins-Regular.woff2') format('woff2');
           font-style: normal;
           font-weight: 400;
-          font-display: optional;
+          font-display: swap;
         }
         @font-face {
           font-family: 'Poppins';
           src: url('/fonts/Poppins/Poppins-Medium.woff2') format('woff2');
           font-style: normal;
           font-weight: 500;
-          font-display: optional;
+          font-display: swap;
         }
         @font-face {
           font-family: 'Poppins';
           src: url('/fonts/Poppins/Poppins-SemiBold.woff2') format('woff2');
           font-style: normal;
           font-weight: 600;
-          font-display: optional;
+          font-display: swap;
         }
 
         @font-face {
@@ -84,7 +84,7 @@ export default function GlobalCss() {
           src: url('/fonts/Poppins/Poppins-Bold.woff2') format('woff2');
           font-style: normal;
           font-weight: 700;
-          font-display: optional;
+          font-display: swap;
         }
       `}
     />

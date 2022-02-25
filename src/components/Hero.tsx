@@ -5,11 +5,11 @@ import { FadeUp, FadeLeft } from '@/components/animations';
 export default function Hero() {
   return (
     <StyledHero>
-      <Image src="/hero.png" alt="hero image" objectFit="cover" layout="fill" quality="75" priority />
+      <Image src="/hero.png" alt="hero image" objectFit="cover" layout="fill" quality="66" priority />
       <StyledHeroContainer>
         <StyledPoster>
           <FadeLeft delay={0.75}>
-            <Image src="/poster.png" alt="rick and morty poster" objectFit="cover" width="310" height="500" layout="intrinsic" quality="45" priority />
+            <Image src="/poster.png" alt="rick and morty poster" objectFit="cover" width="310" height="500" layout="intrinsic" quality="45" />
           </FadeLeft>
         </StyledPoster>
         <StyledContent>
