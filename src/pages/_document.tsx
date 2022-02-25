@@ -6,20 +6,30 @@ type Props = {
   css: any;
 };
 
+const criticalCss = `body{
+  font-family: Poppins, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}`;
 class MyDocument extends Document<Props> {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
-    const page = await ctx.renderPage();
-    const styles = extractCritical(page.html);
-    return { ...initialProps, ...page, ...styles };
+    // const page = await ctx.renderPage();
+    const critical = extractCritical(initialProps.html);
+    initialProps.html = critical.html;
+    initialProps.styles = (
+      <>
+        {initialProps.styles}
+        {/* eslint-disable react/no-danger */}
+        <style data-emotion-css={critical.ids.join(` `)} dangerouslySetInnerHTML={{ __html: critical.css }} />
+        <style dangerouslySetInnerHTML={{ __html: criticalCss }} />
+      </>
+    );
+    return initialProps;
   }
 
   render() {
     return (
       <Html lang="en">
         <Head>
-          {/* eslint-disable react/no-danger  */}
-          <style data-emotion-css={this.props.ids.join(` `)} dangerouslySetInnerHTML={{ __html: this.props.css }} />
           {/* meta tags PWA */}
           <meta name="theme-color" content="#333" />
           <link rel="manifest" href="/manifest.json" />
