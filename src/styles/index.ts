@@ -352,7 +352,7 @@ export const StyledCharacters = styled.section`
 `;
 export const StyledCharacterImg = styled.div`
   height: 150px;
-  > div {
+  > * {
     ${tw`shadow-xl rounded-lg transform scale-125 -mt-4 lg:(origin-left scale-150 mt-0)`}
   }
 `;
