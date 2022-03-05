@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { ErrorMessage } from '@/components';
 import { StyledCharacters, StyledLoader, StyledSectionTitle } from '@/styles';

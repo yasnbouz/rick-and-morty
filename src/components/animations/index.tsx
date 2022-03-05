@@ -1,7 +1,7 @@
 import { m as motion, MotionAdvancedProps, useAnimation, Variants } from 'framer-motion';
 import { ComponentChildren, FunctionComponent } from 'preact';
 import { forwardRef } from 'preact/compat';
-import { useEffect, useMemo } from 'preact/hooks';
+import { useEffect, useMemo } from 'react';
 
 type Props = {
   revealOnScroll?: boolean;

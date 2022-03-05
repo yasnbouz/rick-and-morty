@@ -1,4 +1,4 @@
-import { useEffect } from 'preact/hooks';
+import { useEffect } from 'react';
 import { RefObject } from 'preact';
 import { useQuery } from 'react-query';
 

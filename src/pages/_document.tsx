@@ -20,7 +20,6 @@ class MyDocument extends Document<Props> {
         {initialProps.styles}
         {/* eslint-disable react/no-danger */}
         <style data-emotion-css={critical.ids.join(` `)} dangerouslySetInnerHTML={{ __html: critical.css }} />
-        <style dangerouslySetInnerHTML={{ __html: criticalCss }} />
       </>
     );
     return initialProps;
@@ -30,6 +29,8 @@ class MyDocument extends Document<Props> {
     return (
       <Html lang="en">
         <Head>
+          {/* critical font */}
+          <style dangerouslySetInnerHTML={{ __html: criticalCss }} />
           {/* meta tags PWA */}
           <meta name="theme-color" content="#333" />
           <link rel="manifest" href="/manifest.json" />
