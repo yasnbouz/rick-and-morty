@@ -8,6 +8,7 @@ const runtimeCaching = require('next-pwa/cache');
 const nextConfig = {
   images: {
     domains: ['rickandmortyapi.com'],
+    formats: ['image/avif', 'image/webp'],
   },
   pwa: {
     disable: process.env.NODE_ENV === 'development',

@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'preact/hooks';
+import { useState, useRef, useCallback } from 'react';
 import { StyledBurger, StyledNav, StyledMenu } from '@/styles/index';
 import { useOnClickOutside } from '@/hooks';
 import { BlockReveal } from './animations';

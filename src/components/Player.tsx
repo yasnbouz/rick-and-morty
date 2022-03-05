@@ -1,4 +1,4 @@
-import { useEffect } from 'preact/hooks';
+import { useEffect } from 'react';
 
 export default function Player({ url, title }: { url: string; title: string }) {
   useEffect(() => {

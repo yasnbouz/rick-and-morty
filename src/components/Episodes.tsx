@@ -1,4 +1,4 @@
-import { useRef } from 'preact/hooks';
+import { useRef } from 'react';
 import { useMachine } from '@xstate/react';
 import { useInView } from 'react-intersection-observer';
 import dynamic from 'next/dynamic';

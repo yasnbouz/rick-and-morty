@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'preact/hooks';
+import { useCallback, useState } from 'react';
 import locale from 'rc-pagination/lib/locale/en_US';
 import { StyledPagination } from '@/styles';
 import { NextIcon, PrevIcon } from '@/components';
