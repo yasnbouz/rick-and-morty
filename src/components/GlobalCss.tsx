@@ -49,43 +49,6 @@ export default function GlobalCss() {
         ::selection {
           background-color: ${theme`colors.purple.700`};
         }
-
-        @font-face {
-          font-family: 'Georgia';
-          src: url('/fonts/Georgia/Georgia.woff2') format('woff2');
-          font-style: normal;
-          font-weight: 400;
-          font-display: swap;
-        }
-        @font-face {
-          font-family: 'Poppins';
-          src: url('/fonts/Poppins/Poppins-Regular.woff2') format('woff2');
-          font-style: normal;
-          font-weight: 400;
-          font-display: swap;
-        }
-        @font-face {
-          font-family: 'Poppins';
-          src: url('/fonts/Poppins/Poppins-Medium.woff2') format('woff2');
-          font-style: normal;
-          font-weight: 500;
-          font-display: swap;
-        }
-        @font-face {
-          font-family: 'Poppins';
-          src: url('/fonts/Poppins/Poppins-SemiBold.woff2') format('woff2');
-          font-style: normal;
-          font-weight: 600;
-          font-display: swap;
-        }
-
-        @font-face {
-          font-family: 'Poppins';
-          src: url('/fonts/Poppins/Poppins-Bold.woff2') format('woff2');
-          font-style: normal;
-          font-weight: 700;
-          font-display: swap;
-        }
       `}
     />
   );
