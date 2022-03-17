@@ -8,20 +8,20 @@
     "short_name": "Rick and Morty",
     "icons": [
         {
-            "src": "/icons/pwa-192x192.png",
+            "src": "/icons/pwa-192x192.webp",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/webp"
         },
         {
-            "src": "/icons/maskable-icon.png",
+            "src": "/icons/maskable-icon.webp",
             "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "any maskable"
+            "type": "image/webp",
+            "purpose": "maskable"
         },
         {
-            "src": "/icons/pwa-512x512.png",
+            "src": "/icons/pwa-512x512.webp",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/webp"
         }
     ]
 }
