@@ -32,12 +32,12 @@ class MyDocument extends Document<Props> {
           {/* meta tags PWA */}
           <meta name="theme-color" content="#333" />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="icon" type="image/png" href="/icons/favicon-16x16.png" sizes="16x16" />
-          <link rel="icon" type="image/png" href="/icons/favicon-32x32.png" sizes="32x32" />
-          <link rel="icon" type="image/png" href="/icons/pwa-192x192.png" sizes="192x192" />
-          <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png" sizes="180x180" />
+          <link rel="icon" type="image/webp" href="/icons/favicon-16x16.webp" sizes="16x16" />
+          <link rel="icon" type="image/webp" href="/icons/favicon-32x32.webp" sizes="32x32" />
+          <link rel="icon" type="image/webp" href="/icons/pwa-192x192.webp" sizes="192x192" />
+          <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.webp" sizes="180x180" />
           <meta name="msapplication-config" content="/icons/browserconfig.xml" />
-          <link rel="mask-icon" href="/icons/maskable-icon.png" />
+          <link rel="mask-icon" href="/icons/maskable-icon.webp" />
         </Head>
         <body>
           <Main />
