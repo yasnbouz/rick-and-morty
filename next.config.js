@@ -9,6 +9,7 @@ const nextConfig = {
   images: {
     domains: ['rickandmortyapi.com'],
     formats: ['image/avif', 'image/webp'],
+    deviceSizes: [420, 750, 920, 1080],
   },
   pwa: {
     disable: process.env.NODE_ENV === 'development',
