@@ -10,7 +10,7 @@ export default function Header() {
       <Link href="/">
         <a>
           <BlockReveal>
-            <Image src="/logo.webp" width="164" quality={75} height="52" alt="rick and morty" layout="fixed" />
+            <Image src="/logo.webp" width="164" quality={75} height="52" alt="rick and morty" layout="fixed" loading="eager" />
           </BlockReveal>
         </a>
       </Link>
