@@ -7,7 +7,20 @@ export default function Hero() {
     <StyledHero>
       <StyledHeroContainer>
         <StyledPoster>
-          <Image src="/poster.webp" alt="rick and morty poster" objectFit="cover" width={310} height={500} layout="responsive" quality={45} loading="eager" priority />
+          <Image
+            src="/poster.webp"
+            alt="rick and morty poster"
+            width={310}
+            height={500}
+            layout="responsive"
+            objectFit="cover"
+            loading="eager"
+            quality={45}
+            priority
+            sizes="(max-width: 750px) calc(50vw - 1rem),
+            (max-width: 920px) 920px,
+            100vw"
+          />
         </StyledPoster>
         <StyledContent>
           <FadeUp custom={0.5} delay={1}>

@@ -142,7 +142,7 @@ export const StyledHeroContainer = styled.div`
   ${containerStyle}
 `;
 export const StyledPoster = styled.div`
-  ${tw`mx-auto w-full max-w-[310px] max-h-[500px] flex-shrink-0 mb-5 md:(mr-10 mb-0 block)`}
+  ${tw`mx-auto block w-full max-w-[310px] max-h-[500px] flex-shrink-0 mb-5 md:(mr-10 mb-0)`}
 `;
 export const StyledContent = styled.div`
   ${tw`flex flex-col items-start text-white`}
