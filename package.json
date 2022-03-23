@@ -101,6 +101,12 @@
     "twin.macro": "2.8.2",
     "typescript": "4.4.2"
   },
+  "browserslist": [
+    ">0.5%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

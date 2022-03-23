@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps = async () => {
   await queryClient.setQueryData([`getAllCharacters`, { page: 1 }], data);
 
   // load episodes on the server
-  // await ScrapData();
+  await ScrapData();
   const episodesData = loadData(storePath);
   await queryClient.setQueryData(`getAllEpisodes`, JSON.parse(episodesData as string));
 
