@@ -1,16 +1,26 @@
 import Image from 'next/image';
 import { StyledContent, StyledHero, StyledHeroContainer, StyledPoster } from '@/styles';
-import { FadeUp, FadeLeft } from '@/components/animations';
+import { FadeUp } from '@/components/animations';
 
 export default function Hero() {
   return (
     <StyledHero>
-      <Image src="/hero.webp" alt="hero image" objectFit="cover" layout="fill" quality="66" priority />
       <StyledHeroContainer>
         <StyledPoster>
-          <FadeLeft delay={0.75}>
-            <Image src="/poster.webp" alt="rick and morty poster" objectFit="cover" width="310" height="500" layout="intrinsic" quality="45" />
-          </FadeLeft>
+          <Image
+            src="/poster.webp"
+            alt="rick and morty poster"
+            width={310}
+            height={500}
+            layout="responsive"
+            objectFit="cover"
+            loading="eager"
+            quality={45}
+            priority
+            sizes="(max-width: 750px) calc(50vw - 1rem),
+            (max-width: 920px) 920px,
+            100vw"
+          />
         </StyledPoster>
         <StyledContent>
           <FadeUp custom={0.5} delay={1}>

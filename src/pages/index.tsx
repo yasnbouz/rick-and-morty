@@ -2,7 +2,6 @@ import { GetStaticProps } from 'next';
 import { QueryClient } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
 import { NextSeo } from 'next-seo';
-import { m as motion } from 'framer-motion';
 import { loadData, storePath } from '@/scraping/utils';
 import { GetAllCharactersDocument, GetAllCharactersQuery } from '@/generated/graphql';
 import { client } from '@/lib/graphqlClient';
@@ -29,7 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Home() {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 1 }}>
+    <div>
       <NextSeo
         title="Watch Rick and Morty (2013)"
         description="Watch Rick and Morty (2013) - Action & Adventure, Animation, Comedy, Sci-Fi & Fantasy TVShow: Rick is a mentally-unbalanced but scientifically-gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school."
@@ -62,6 +61,6 @@ export default function Home() {
         <ScrollTop />
       </main>
       <Footer />
-    </motion.div>
+    </div>
   );
 }

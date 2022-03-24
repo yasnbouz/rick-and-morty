@@ -96,10 +96,17 @@
     "playwright-core": "1.8.1",
     "postcss": "8.2.2",
     "prettier": "2.3.2",
+    "sharp": "0.30.3",
     "tailwindcss": "2.0.2",
     "twin.macro": "2.8.2",
     "typescript": "4.4.2"
   },
+  "browserslist": [
+    ">0.5%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
