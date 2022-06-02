@@ -86,37 +86,6 @@ export const FadeUp = forwardRef<HTMLDivElement, MotionAdvancedProps & Props>(({
   );
 });
 
-export const FadeLeft: FunctionComponent<Props> = ({ children, inView, revealOnScroll = false, delay = 1, ...props }) => {
-  const controls = useAnimation();
-  const variants: Variants = useMemo(
-    () => ({
-      hidden: { x: -200, opacity: 0 },
-      visible: { x: 0, opacity: 1, transition: { type: `tween`, duration: 1.25, delay, ease: `easeOut` } },
-    }),
-    [delay],
-  );
-  useEffect(() => {
-    if (revealOnScroll) {
-      if (inView) {
-        controls.start(`visible`);
-      } else {
-        controls.start(`hidden`);
-      }
-    }
-  }, [revealOnScroll, inView]);
-
-  useEffect(() => {
-    if (!revealOnScroll) {
-      controls.start(`visible`);
-    }
-  }, [revealOnScroll]);
-
-  return (
-    <motion.div initial="hidden" animate="visible" variants={variants} {...props}>
-      {children}
-    </motion.div>
-  );
-};
 // ----------------------------------------------------------------------------------------------------------------------
 
 export const FadeRight: FunctionComponent<MotionAdvancedProps & Props> = ({ children, inView, revealOnScroll = false, delay = 0, ...props }) => {

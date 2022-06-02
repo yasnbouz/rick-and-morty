@@ -1,7 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { StyledBurger, StyledNav, StyledMenu } from '@/styles/index';
 import { useOnClickOutside } from '@/hooks';
-import { BlockReveal } from './animations';
 
 export default function Menu() {
   const [open, setOpen] = useState(false);
@@ -21,18 +20,14 @@ export default function Menu() {
       </StyledBurger>
       <StyledMenu ref={refMenu} open={open}>
         <li>
-          <BlockReveal delay={0.25}>
-            <button type="button" onClick={() => scrollIntoView(`episodes`)}>
-              Episodes
-            </button>
-          </BlockReveal>
+          <button type="button" onClick={() => scrollIntoView(`episodes`)}>
+            Episodes
+          </button>
         </li>
         <li>
-          <BlockReveal delay={0.5}>
-            <button type="button" onClick={() => scrollIntoView(`characters`)}>
-              Characters
-            </button>
-          </BlockReveal>
+          <button type="button" onClick={() => scrollIntoView(`characters`)}>
+            Characters
+          </button>
         </li>
       </StyledMenu>
     </StyledNav>
