@@ -5,7 +5,7 @@ import { loadData, storePath } from '@/scraping/utils';
 import { GetAllCharactersDocument, GetAllCharactersQuery } from '@/generated/graphql';
 import { client } from '@/lib/graphqlClient';
 import { Header, Hero, Episodes, Characters, ScrollTop, Footer } from '@/components';
-import { ScrapData } from '@/scraping';
+// import { ScrapData } from '@/scraping';
 import Seo from '@/components/Seo';
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -14,7 +14,7 @@ export const getStaticProps: GetStaticProps = async () => {
   await queryClient.setQueryData([`getAllCharacters`, { page: 1 }], data);
 
   // load episodes on the server
-  await ScrapData();
+  // await ScrapData();
   const episodesData = loadData(storePath);
   await queryClient.setQueryData(`getAllEpisodes`, JSON.parse(episodesData as string));
 
